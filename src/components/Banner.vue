@@ -113,8 +113,7 @@ export default {
     font-size: 1.4rem;
     font-weight: normal;
     line-height: 2.2rem;
-    color: #2ca532;
-    // color: white;
+    color: #ff8345;
   }
 
   .download,
@@ -125,17 +124,19 @@ export default {
     font-size: 1.3rem;
     font-weight: bold;
     line-height: 2;
-    border: 0.1rem solid #42bd56;
+    border: 0.1rem solid #2e6da4;
     border-radius: 0.3rem;
   }
 
   .download {
     color: #fff;
-    background: #42bd56;
+    background: #337ab7;
   }
 
   .open {
-    color: #42bd56;
+    color: #ff8345;
+    border: 0.1rem solid #ff8345;
+    
   }
 }
 </style>

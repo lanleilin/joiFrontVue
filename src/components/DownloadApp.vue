@@ -4,10 +4,10 @@
       <img src="../assets/unicorn_logo.png" alt="下载Joi">
       <div class="info-content">
         <strong>Joi</strong>
-        <div>我们的精神角落</div>
+        <!-- <div>EVERYTHING YOU WANT TO HEAR</div> -->
       </div>
     </div>
-    <a href="#">去 App Store 免费下载 iOS 客户端</a>
+    <a href="#">EVERYTHING YOU WANT TO HEAR</a>
   </div>
 </template>
 
@@ -51,13 +51,15 @@ img {
 
 strong {
   font-size: 2.4rem;
-  font-weight: normal;
+  color: #337ab7;
+  font-weight: bold;
   line-height: 2.8rem;
 }
 
 .download-app a:last-child {
   display: block;
-  color: #42bd56;
+  color: #ff8345;
+  font-weight: normal;
   text-decoration: none;
 }
 </style>
