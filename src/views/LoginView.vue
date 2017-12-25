@@ -166,7 +166,7 @@ export default {
       position: absolute;
       left: 1.8rem;
       top: 0;
-      color: #42bd56;
+      color: #337ab7;
       font-size: 1.5rem;
       font-weight: normal;
     }
@@ -265,7 +265,7 @@ export default {
       font-size: 1.5rem;
 
       a {
-        color: #42bd56;
+        color: #337ab7;
         margin-right: 1.5rem;
       }
     }

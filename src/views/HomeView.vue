@@ -9,18 +9,20 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions } from "vuex";
 
-import InfiniteLoading from 'vue-infinite-loading'
-import SubNav from '../components/SubNav'
-import List from '../components/List'
-import Loading from '../components/Loading'
+import InfiniteLoading from "vue-infinite-loading";
+import SubNav from "../components/SubNav";
+import List from "../components/List";
+import Loading from "../components/Loading";
 
 export default {
-  name: 'home-view',
+  name: "home-view",
   components: { SubNav, List, InfiniteLoading, Loading },
-  data () {
-    return {}
+  data() {
+    return {
+      // list:[]
+    };
   },
   computed: {
     // Getting Vuex State from store/modules/activities
@@ -30,18 +32,17 @@ export default {
   },
   methods: {
     // Using vue-infinite-loading
-    onInfinite () {
+    onInfinite ($state) {
       setTimeout(() => {
-        this.loadMore()
-        this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded')
+        this.loadMore();
+        $state.loaded();
+        // this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded')
       }, 1000)
     },
     // Dispatching Actions
-    ...mapActions([
-      'loadMore'
-    ])
+    ...mapActions(["loadMore"])
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

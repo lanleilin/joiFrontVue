@@ -214,7 +214,7 @@ export default {
       margin-top: 1rem;
       line-height: 1;
       font-size: 1.4rem;
-      color: #42bd56;
+      color: #337ab7;
     }
 
     .buy {
@@ -294,7 +294,7 @@ h2 {
   }
 
   a {
-    color: #42bd56;
+    color: #337ab7;
   }
 }
 
@@ -327,7 +327,7 @@ h2 {
     font-size: 1.6rem;
     line-height: 1.8rem;
     text-align: center;
-    color: #42bd56;
+    color: #337ab7;
   }
 }
 

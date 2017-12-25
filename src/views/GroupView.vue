@@ -50,7 +50,7 @@ export default {
   font-size: 1.6rem;
   line-height: 1.8rem;
   text-align: center;
-  color: #42bd56;
+  color: #337ab7;
 }
 
 .user-bar {

@@ -7,7 +7,7 @@
     <div class="content">
       <slot name="promItem"></slot>
       <ul class="hasCover" v-if="type === 'hasCover'">
-        <li v-for="item in items" :key="item">
+        <li v-for="(item,index) in items" :key="index">
           <router-link :to="'subject/' + item.id" append>
             <img v-if="item.images" :src="item.images.large" alt="">
             <span class="title">{{item.title}}</span>
@@ -16,7 +16,7 @@
         </li>
       </ul>
       <ul class="onlyString" v-if="type === 'onlyString'">
-        <li v-for="item in items" style="border-color: #FFAC2D;" :key="item">
+        <li v-for="(item,index) in items" style="border-color: #FFAC2D;" :key="index">
           <a :href="item.href" v-if="!item.line" :style="{color: item.color}">{{item.title}}</a>
         </li>
       </ul>
@@ -53,7 +53,7 @@ export default {
     float: right;
     font-size: 1.44rem;
     &:last-child {
-      color: #42bd56;
+      color: #337ab7;
     }
   }
 

@@ -123,7 +123,7 @@ export default {
     border-right: solid 0.1rem #eee;
 
     a {
-      color: #42bd56;
+      color: #337ab7;
     }
   }
 

@@ -107,7 +107,7 @@ export default {
     padding: 1.5rem 0 1.5rem 5rem;
     font-size: 1.6rem;
     line-height: 1.8rem;
-    color: #42bd56;
+    color: #337ab7;
   }
 }
 </style>

@@ -160,7 +160,7 @@ export default {
     margin: 10% 0 9%;
     font-size: 4rem;
     font-weight: 300;
-    color: #42bd56;
+    color: #337ab7;
     text-align: center;
   }
 
@@ -227,7 +227,7 @@ export default {
       font-size: 1.7rem;
       text-align: center;
       color: #fff;
-      background: #42bd56;
+      background: #337ab7;
       border: 0.1rem solid #17AA52;
       border-radius: 0.3rem;
     }
@@ -261,7 +261,7 @@ export default {
       font-size: 1.5rem;
 
       a {
-        color: #42bd56;
+        color: #337ab7;
         margin-right: 1.5rem;
       }
     }

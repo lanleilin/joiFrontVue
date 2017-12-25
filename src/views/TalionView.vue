@@ -119,7 +119,7 @@ export default {
 }
 
 .close-talion {
-  color: #42bd56;
+  color: #337ab7;
   font-size: 1.6rem;
 }
 

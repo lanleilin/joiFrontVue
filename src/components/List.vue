@@ -128,7 +128,7 @@ export default {
     .info {
       margin-top: 0.5rem;
       font-size: 1.4rem;
-      color: #42bd56;
+      color: #337ab7;
     }
   }
 }

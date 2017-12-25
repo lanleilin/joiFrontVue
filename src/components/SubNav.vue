@@ -101,7 +101,7 @@ export default {
     margin: 0 auto;
     box-sizing: border-box;
     font-size: 1.5rem;
-    color: #42bd56;
+    color: #337ab7;
 
     &:first-child {
       border-right: 0.1rem solid #e5e5e5;

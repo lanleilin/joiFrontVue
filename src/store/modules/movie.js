@@ -41,7 +41,7 @@ const state = {
         {
             title: '2015终极期待',
             href: 'https://m.douban.com/doulist/37479562',
-            color: '#42BD56'
+            color: '#337ab7'
         },
         {
             title: '经典韩国电影——收集100部',
