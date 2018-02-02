@@ -13,6 +13,9 @@ import SearchView from '../views/SearchView'
 import LoginView from '../views/LoginView'
 import RegisterView from '../views/RegisterView'
 
+import MusicView from '../views/MusicView'
+
+
 Vue.use(Router)
 
 export default new Router({
@@ -34,6 +37,7 @@ export default new Router({
           name: 'HomeView',
           component: HomeView
         },
+
         {
           path: 'movie',
           name: 'MovieView',
@@ -86,6 +90,11 @@ export default new Router({
       path: '/register',
       name: 'RegisterView',
       component: RegisterView
+    },
+    {
+      path: 'music',
+      name: 'MusicView',
+      component: MusicView
     },
     {
       path: '*',

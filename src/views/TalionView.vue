@@ -61,7 +61,7 @@
             <strong style="color: rgb(244, 143, 46);">音乐</strong>
             <span>新碟榜</span>
           </a> -->
-        <router-link :to="{ name: 'HomeView'}">
+        <router-link :to="{ name: 'MusicView'}">
           <a href="javascript:" target="_blank" @click="closeTalion">
         	  <strong style="color: rgb(244, 143, 46);">音乐</strong>
             <span>新碟榜</span>
