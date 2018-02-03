@@ -1,6 +1,7 @@
 <template>
   <div>
-      <h1>test</h1>
+      <h1 @click="changeColor">test</h1>
+      <h1>{{newRhymeList}}</h1>
   </div>
 </template>
 
@@ -17,12 +18,14 @@ export default {
   },
   computed: {
     // Getting Vuex State from store/modules/activities
-    // ...mapState({
-    //   events: state => state.activities.events
-    // })
+    ...mapState({
+      newRhymeList: state => state.newRhymeList
+    })
   },
   methods: {
-
+    changeColor(){
+      this.$store.dispatch('changeColor')
+    }
   }
 };
 </script>
