@@ -1,6 +1,8 @@
 const state={
     oldRhymeList:[],
     newRhymeList:[{
-        title:'joi'
+        title:'joi',
+        href:'',
+        color:'lightblue'
     }]
 }
