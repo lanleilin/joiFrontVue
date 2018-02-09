@@ -19,12 +19,13 @@ export default {
   computed: {
     // Getting Vuex State from store/modules/activities
     ...mapState({
-      newRhymeList: state => state.newRhymeList
+      newRhymeList: state => state.movie.testmovie
     })
   },
   methods: {
     changeColor(){
-      this.$store.dispatch('changeColor')
+      console.log('changecolor')
+      // this.$store.dispatch('changeColor')
     }
   }
 };

@@ -1,4 +1,5 @@
 const state={
+    testRhyme:'testrhyme',
     oldRhymeList:[],
     newRhymeList:[{
         title:'joi',

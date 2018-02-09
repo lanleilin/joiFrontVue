@@ -96,7 +96,7 @@
         <list :items="questions"></list>
         <a class="list-link" href="javascript:;">显示更多问答</a>
       </div>
-      <scroller title="推荐的豆列" type="onlyString" :items="movieTags"></scroller>
+      <scroller title="推荐的JOI" type="onlyString" :items="movieTags"></scroller>
       <download-app></download-app>
     </template>
     <loading v-show="showLoading"></loading>
