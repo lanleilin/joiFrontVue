@@ -4,7 +4,7 @@
       <h2>{{title}}</h2>
     </div>
     <ul class="content">
-      <li v-for="item in items"> 
+      <li v-for="item in items" :key="item"> 
         <router-link
           :to="{name: 'SubjectView',
           params: {classify: item.subtype ? item.subtype : 'book',
@@ -32,7 +32,7 @@
 import Rating from '../components/Rating'
 
 export default {
-  name: 'group',
+  name: 'music',
   components: { Rating },
   props: {
     title: {
