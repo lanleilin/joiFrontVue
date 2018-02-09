@@ -19,7 +19,7 @@
     </template>
     <template v-if="mold === 'basic'">
       <ul class="basic">
-        <li v-for="item in items">
+        <li v-for="item in items" :key="item">
           <a href="#">
             <h3>{{item.title}}</h3>
             <div class="info">{{item.comments}}</div>
