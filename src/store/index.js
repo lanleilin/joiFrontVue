@@ -6,6 +6,7 @@ import activities from './modules/activities'
 import book from './modules/book'
 import subject from './modules/subject'
 import group from './modules/group'
+import music from './modules/music'
 import search from './modules/search'
 import user from './modules/user'
 
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     book,
     subject,
     group,
+    music,
     search,
     user
   }

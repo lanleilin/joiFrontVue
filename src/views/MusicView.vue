@@ -1,39 +1,59 @@
 <template>
-  <div>
-      <h1 @click="changeColor">test</h1>
-      <h1>{{newRhymeList}}</h1>
+  <div class="group-view has-header">
+    <user-bar></user-bar>
+    <group title="租房找室友" :items="group_a">
+      <a class="list-link" href="#" slot="more">更多相关小组</a>
+    </group>
+    <group title="来聊五块钱" :items="group_b">
+      <a class="list-link" href="#" slot="more">来聊五块钱</a>
+    </group>
+    <group title="买买买" :items="group_c">
+      <a class="list-link" href="#" slot="more">更多相关小组</a>
+    </group>
+    <download-app></download-app>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState } from 'vuex'
+
+import UserBar from '../components/UserBar'
+import Group from '../components/Group'
+import DownloadApp from '../components/DownloadApp'
 
 export default {
-  name: "music-view",
-//   components: { SubNav, List, InfiniteLoading, Loading },
-  data() {
-    return {
-      // list:[]
-    };
+  name: 'group-view',
+  components: { UserBar, Group, DownloadApp },
+  data () {
+    return {}
   },
   computed: {
-    // Getting Vuex State from store/modules/activities
+    // Getting Vuex State from store/modules/group
     ...mapState({
-      newRhymeList: state => state.music.newRhymeList
+      group_a: state => state.music.group_a,
+      group_b: state => state.music.group_b,
+      group_c: state => state.music.group_c
     })
   },
-  methods: {
-    changeColor(){
-      console.log('changecolor')
-      // this.$store.dispatch('changeColor')
-    }
+  created: function () {
+    // Dispatching getGroup on created
+    this.$store.dispatch('getGroup')
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-// .sub-nav {
-//   margin: 0 1.8rem;
-//   padding-top: 0.2rem;
-// }
+.list-link {
+  display: block;
+  margin-bottom: 3rem;
+  padding: 1.5rem 0;
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  text-align: center;
+  color: #337ab7;
+}
+
+.user-bar {
+  margin-bottom: 1.5rem;
+}
 </style>
