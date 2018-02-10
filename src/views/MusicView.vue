@@ -19,7 +19,7 @@ export default {
   computed: {
     // Getting Vuex State from store/modules/activities
     ...mapState({
-      newRhymeList: state => state.movie.testmovie
+      newRhymeList: state => state.music.newRhymeList
     })
   },
   methods: {
