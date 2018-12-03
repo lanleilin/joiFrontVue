@@ -44,6 +44,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import request from "superagent"
 
 export default {
   name: 'sub-nav',
@@ -67,8 +68,16 @@ export default {
     ...mapGetters(['currentUser'])
   },
   methods: {
-    clicklog(){
-      console.log('clicklog')
+    clicklog() {
+      console.log("clicklog");
+      request
+        .get("/api/testTxt")
+        // .use(jsonp)
+        .end((err, res) => {
+          if (!err) {
+            console.log(res);
+          }
+        });
     },
     logout () {
       this.$store.commit({
