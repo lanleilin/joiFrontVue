@@ -23,7 +23,8 @@
           <router-link :to="{name: 'MovieView'}">影院热映</router-link>
         </li>
         <li>
-          <router-link :to="{name: 'StatusView'}">欧美新碟榜</router-link>
+          <a @click="clicklog()">clickme</a>
+          <!-- <router-link :to="{name: 'StatusView'}">欧美新碟榜</router-link> -->
         </li>
         <li>
           <router-link :to="{name: 'RegisterView'}">注册帐号</router-link>
@@ -66,6 +67,9 @@ export default {
     ...mapGetters(['currentUser'])
   },
   methods: {
+    clicklog(){
+      console.log('clicklog')
+    },
     logout () {
       this.$store.commit({
         type: 'logout'
