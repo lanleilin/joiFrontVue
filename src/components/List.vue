@@ -5,14 +5,14 @@
         class="thumbnail"
         :to="{name: 'DetailView', params: { id: item.id }}">
         <div class="content">
-          <img :src="item.image_hlarge" alt="cover">
-          <h3>{{item.title}}</h3>
-          <p>{{item.content | subStr}}</p>
+          <!-- <img :src="item.image_hlarge" alt="cover"> -->
+          <h3>{{item.name}}</h3>
+          <p>{{item.manufacturer | subStr}}</p>
         </div>
         <div class="author">
-          <span class="name">{{item.category_name}}</span>
-          <span class="label" v-if="item.subcategory_name">
-            本活动来自栏目 {{item.subcategory_name}}
+          <span class="name">{{item.price}}</span>
+          <span class="label" v-if="item.price">
+            本活动来自栏目 {{item.price}}
           </span>
         </div>
       </router-link>
@@ -21,8 +21,8 @@
       <ul class="basic">
         <li v-for="item in items" >
           <a href="#">
-            <h3>{{item.title}}</h3>
-            <div class="info">{{item.comments}}</div>
+            <h3>{{item.name}}</h3>
+            <div class="info">{{item.name}}</div>
           </a>
         </li>
       </ul>

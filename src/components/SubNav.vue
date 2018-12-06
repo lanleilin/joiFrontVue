@@ -23,7 +23,7 @@
           <router-link :to="{name: 'MovieView'}">影院热映</router-link>
         </li>
         <li>
-          <a @click="clicklog()">clickme</a>
+          <a @click="clicklog()">clickme1</a>
           <!-- <router-link :to="{name: 'StatusView'}">欧美新碟榜</router-link> -->
         </li>
         <li>
@@ -69,9 +69,10 @@ export default {
   },
   methods: {
     clicklog() {
-      console.log("clicklog");
+      console.log("clicklog1111");
       request
-        .get("/api/testTxt")
+        // .get("/api/testTxt")
+        .get("/api/products")
         // .use(jsonp)
         .end((err, res) => {
           if (!err) {

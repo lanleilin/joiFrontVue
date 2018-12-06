@@ -1,10 +1,11 @@
 <template>
   <div class="home-view has-header">
     <sub-nav mold="quickNav"></sub-nav>
+    <h1 style="text-align:center" @click="onInfinite">homeview</h1>
     <list mold="thumbnail" :items="events"></list>
-    <infinite-loading @infinite="onInfinite" ref="infiniteLoading">
+    <!-- <infinite-loading @infinite="onInfinite" ref="infiniteLoading">
       <loading slot="spinner"></loading>
-    </infinite-loading>
+    </infinite-loading> -->
   </div>
 </template>
 

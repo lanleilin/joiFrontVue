@@ -25,15 +25,28 @@ const actions = {
    * count: 3 default
    */
   loadMore ({commit, state}) {
+    // request
+    //   .get('https://api.douban.com/v2/event/list?loc=108288&start=' +
+    //     state.skip + '&count=3')
+    //   .use(jsonp)
+    //   .end((err, res) => {
+    //     if (!err) {
+    //       console.log('res',res.body.events)
+    //       commit({
+    //         type: 'loadMore',
+    //         res: res.body.events
+    //       })
+    //     }
+    //   })
+    // TODO
     request
-      .get('https://api.douban.com/v2/event/list?loc=108288&start=' +
-        state.skip + '&count=3')
-      .use(jsonp)
+      .get('/api/products')
       .end((err, res) => {
         if (!err) {
+          console.log('apires',res.body.products)
           commit({
             type: 'loadMore',
-            res: res.body.events
+            res: res.body.products
           })
         }
       })
