@@ -20,7 +20,7 @@
     <div class="quickNav" v-if="mold === 'quickNav'">
       <ul class="quick-nav">
         <li>
-          <router-link :to="{name: 'MovieView'}">影院热映</router-link>
+          <router-link :to="{name: 'NoteView'}">写Note</router-link>
         </li>
         <li>
           <a @click="clicklog()">clickme1</a>

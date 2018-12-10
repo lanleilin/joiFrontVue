@@ -12,6 +12,7 @@ import DetailView from '../views/DetailView'
 import SearchView from '../views/SearchView'
 import LoginView from '../views/LoginView'
 import RegisterView from '../views/RegisterView'
+import NoteView from '../views/NoteView'
 
 import MusicView from '../views/MusicView'
 
@@ -90,6 +91,11 @@ export default new Router({
       path: '/register',
       name: 'RegisterView',
       component: RegisterView
+    },
+    {
+      path: '/note',
+      name: 'NoteView',
+      component: NoteView
     },
     {
       path: 'music',

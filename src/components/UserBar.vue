@@ -2,7 +2,7 @@
   <router-link class="user-bar" :to="{ name: currentLink}" tag="div">
     <div class="avatar">
       <template v-if="currentUser.name">
-        <img src="../assets/avatar.png" alt="avatar">
+        <img src="../assets/avatar.jpg" alt="avatar">
       </template>
       <template v-else>
         <img src="../assets/user_normal.jpg" alt="未登陆">

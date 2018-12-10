@@ -36,7 +36,7 @@ export default {
     onInfinite ($state) {
       setTimeout(() => {
         this.loadMore();
-        $state.loaded();
+        // $state.loaded();
         // this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded')
       }, 1000)
     },

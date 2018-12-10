@@ -5,7 +5,7 @@
         class="thumbnail"
         :to="{name: 'DetailView', params: { id: item.id }}">
         <div class="content">
-          <!-- <img :src="item.image_hlarge" alt="cover"> -->
+          <img :src="imgSrc" alt="cover">
           <h3>{{item.name}}</h3>
           <p>{{item.manufacturer | subStr}}</p>
         </div>
@@ -45,6 +45,7 @@ export default {
   },
   data () {
     return {
+      imgSrc:'/static/images/cat/hearMeRoar.jpg'
     }
   },
   filters: {

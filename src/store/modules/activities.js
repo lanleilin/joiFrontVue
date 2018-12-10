@@ -19,25 +19,35 @@ const mutations = {
 }
 
 const actions = {
+  
+  /**
+   * createNote
+   * new Promise((resolve, reject) => {})
+   */
+  createNote (form) {
+    console.log('form',form)
+    return new Promise((resolve, reject) => {
+      request
+        .post('/api/products')
+        .send({
+          name: form.title,
+          manufacturer: form.description,
+          price: form.address
+        })
+        .then(res => {
+          console.log('createNote',res)
+          resolve(res)
+        }, err => {
+          reject(err)
+        })
+    })
+  },
   /**
    * Loading more data
    * skip: 3 default
    * count: 3 default
    */
   loadMore ({commit, state}) {
-    // request
-    //   .get('https://api.douban.com/v2/event/list?loc=108288&start=' +
-    //     state.skip + '&count=3')
-    //   .use(jsonp)
-    //   .end((err, res) => {
-    //     if (!err) {
-    //       console.log('res',res.body.events)
-    //       commit({
-    //         type: 'loadMore',
-    //         res: res.body.events
-    //       })
-    //     }
-    //   })
     // TODO
     request
       .get('/api/products')
