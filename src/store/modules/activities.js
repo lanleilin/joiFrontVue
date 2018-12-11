@@ -1,5 +1,4 @@
 import request from 'superagent'
-import jsonp from 'superagent-jsonp'
 
 const state = {
   events: [],
@@ -19,13 +18,31 @@ const mutations = {
 }
 
 const actions = {
-  
+
+  /**
+   * updateNote
+   * new Promise((resolve, reject) => {})
+   */
+  updateNote (form) {
+    console.log('form', form)
+    console.log('id', form.id)
+    return new Promise((resolve, reject) => {
+      request
+        .put('/api/products/' + form.id)
+        .then(res => {
+          console.log('updateNote', res)
+          resolve(res)
+        }, err => {
+          reject(err)
+        })
+    })
+  },
   /**
    * createNote
    * new Promise((resolve, reject) => {})
    */
   createNote (form) {
-    console.log('form',form)
+    console.log('form', form)
     return new Promise((resolve, reject) => {
       request
         .post('/api/products')
@@ -35,7 +52,7 @@ const actions = {
           price: form.address
         })
         .then(res => {
-          console.log('createNote',res)
+          console.log('createNote', res)
           resolve(res)
         }, err => {
           reject(err)
@@ -53,7 +70,7 @@ const actions = {
       .get('/api/products')
       .end((err, res) => {
         if (!err) {
-          console.log('apires',res.body.products)
+          console.log('apires', res.body.products)
           commit({
             type: 'loadMore',
             res: res.body.products
@@ -68,8 +85,7 @@ const actions = {
   getSingleEvent ({commit, state}, payload) {
     return new Promise((resolve, reject) => {
       request
-        .get('https://api.douban.com/v2/event/' + payload.id)
-        .use(jsonp)
+        .get('/api/products')
         .end((err, res) => {
           if (!err) {
             commit({

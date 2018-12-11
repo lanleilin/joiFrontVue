@@ -3,8 +3,7 @@
     <div class="info">
       <img src="../assets/unicorn_logo.png" alt="下载Joi">
       <div class="info-content">
-        <strong>Joi</strong>
-        <!-- <div>EVERYTHING YOU WANT TO HEAR</div> -->
+        <router-link :to="{name: 'HomeView'}" replace><strong>JOI</strong></router-link>
       </div>
     </div>
     <a href="#">EVERYTHING YOU WANT TO HEAR</a>
@@ -47,6 +46,7 @@ img {
 
 .info-content {
   overflow: hidden;
+  margin-top: 18px;
 }
 
 strong {

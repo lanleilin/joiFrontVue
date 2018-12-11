@@ -1,6 +1,6 @@
 <template>
   <div class="detail-view has-header">
-    <banner title="每天看点好内容"></banner>
+    <banner title="NOTE DETAIL"></banner>
     <template v-if="!showLoading">
       <div class="info">
         <h2>
@@ -36,14 +36,14 @@
           </ul>
         </div>
         <div class="detail">
-          <span>起始时间:&nbsp;&nbsp;</span>
+          <span>更新时间:&nbsp;&nbsp;</span>
           <ul>
             <li v-if="eventItem.owner">{{eventItem.owner.name}}</li>
           </ul>
         </div>
         <tags v-if="eventItem.tags" :items="eventItem.tags | toArray"></tags>
         <div class="describe">
-          <h2>活动详情</h2>
+          <h2>Note详情</h2>
           <div v-if="eventItem.content" class="content" v-html="content"></div>
         </div>
       </div>
@@ -156,7 +156,7 @@ export default {
 
 .describe {
   h2 {
-    color: #072;
+    color: #337ab7;
   }
 
   .content {

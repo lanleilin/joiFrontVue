@@ -1,22 +1,29 @@
 <template>
   <div class="list">
+    <div v-if="isDelDialog" class="modal-wrapper" >
+      <div class="modal-dialog">
+        <span class="main-btn" @click="confirmDel()">确认删除</span>
+        <span class="main-btn" @click="cancealDel()">取消</span>
+      </div>
+    </div>
     <template v-if="mold === 'thumbnail'" v-for="item in items">
-      <router-link
-        class="thumbnail"
-        :to="{name: 'DetailView', params: { id: item.id }}">
+      <div class="thumbnail">
         <div class="content">
-          <img :src="imgSrc" alt="cover">
+          <router-link
+            :to="{name: 'DetailView', params: { id: item.id }}">
+            <img :src="imgSrc" alt="cover">
+          </router-link>
           <h3>{{item.name}}</h3>
           <p>{{item.manufacturer | subStr}}</p>
         </div>
         <div class="author">
           <span class="created-at">created at</span>
           <div class="label">
-            <span class="main-btn dkGray">删除</span>
+            <span class="main-btn dkGray" @click="showDelModal(item.id)">删除</span>
             <a :href="item.price" target="blank" class="address main-btn">link</a>
           </div>
         </div>
-      </router-link>
+      </div>
     </template>
     <template v-if="mold === 'basic'">
       <ul class="basic">
@@ -32,6 +39,9 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+import request from 'superagent'
+
 export default {
   name: 'list',
   props: {
@@ -46,8 +56,41 @@ export default {
   },
   data () {
     return {
+      isDelDialog: false,
+      noteFrom: {
+        id: ''
+      },
       imgSrc: '/static/images/cat/hearMeRoar.jpg'
     }
+  },
+  methods: {
+    showDelModal (id) {
+      this.noteFrom.id = id
+      this.isDelDialog = true
+    },
+    confirmDel1 () {
+      console.log('delete', this.noteFrom.id)
+      this.$store.dispatch('activities/updateNote', this.noteFrom)
+      // this.isDelDialog=false
+    },
+    confirmDel () {
+      let form = this.noteFrom
+      return new Promise((resolve, reject) => {
+        request
+          .put('/api/products/' + form.id)
+          .then(res => {
+            console.log('updateNote', res)
+            resolve(res)
+          }, err => {
+            reject(err)
+          })
+      })
+    },
+    cancealDel () {
+      this.isDelDialog = false
+    },
+    ...mapActions(['updateNote'])
+
   },
   filters: {
     subStr: function (value) {
@@ -60,6 +103,30 @@ export default {
 
 <style lang='scss' scoped>
 .list {
+  .modal-wrapper{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    background: rgba(55, 55, 55, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-dialog{
+    width: 80%;
+    max-width: 400px;
+    background: #fff;
+    padding: 60px 20px;
+    text-align: center;
+  }
   .main-btn{
     padding: 5px 15px;
     color: #337ab7;

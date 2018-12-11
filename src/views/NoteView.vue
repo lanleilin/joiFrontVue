@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'note-view',
@@ -80,7 +80,7 @@ export default {
   methods: {
     createNote () {
       // console.log(this.noteFrom)
-      this.$store.dispatch('activities/createNote', this.noteFrom)
+      this.$store.dispatch('/activities/createNote', this.noteFrom)
       // this.createNote(this.noteFrom)
     },
     ...mapActions(['createNote'])
