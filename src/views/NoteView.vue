@@ -56,7 +56,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 
 export default {
   name: 'note-view',
@@ -78,7 +77,11 @@ export default {
     createNote () {
       let form = this.noteFrom
       if (this.validateForm(form)) {
-        this.$store.dispatch('createNote', form)
+        this.$store.dispatch('createNote', form).then(res => {
+          console.log('ccccccreateNote', res)
+        }).catch(error => {
+          console.log('ccccccccreateNote err', error)
+        })
       }
       // this.$store.dispatch('createNote', form)
     },

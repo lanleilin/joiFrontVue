@@ -3,14 +3,13 @@ import request from 'superagent'
 const state = {
   events: [],
   temp: [],
-  skip: 0,
   eventItem: {}
 }
 
 const mutations = {
   loadMore (state, payload) {
-    state.skip += 3
-    state.events = state.events.concat(payload.res)
+    // state.events = state.events.concat(payload.res)
+    state.events = payload.res
   },
   getSingleEvent (state, payload) {
     state.eventItem = payload.res

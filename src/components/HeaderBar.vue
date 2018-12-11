@@ -8,7 +8,7 @@
     <ul class="nav">
       <li>
         <router-link style="color: #81C2D6" :to="{ name: 'MovieView'}">
-          电影
+          WS
         </router-link>
       </li>
       <li>
@@ -18,12 +18,12 @@
       </li>
       <li>
         <router-link style="color: #00a3a7" :to="{ name: 'GroupView'}">
-          小组
+          GR
         </router-link>
       </li>
       <li>
         <router-link style="color: #e3662c" :to="{ name: 'StatusView'}">
-          广播
+          BR
         </router-link>
       </li>
     </ul>
