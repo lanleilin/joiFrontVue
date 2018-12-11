@@ -231,8 +231,8 @@ export default {
       font-size: 1.7rem;
       text-align: center;
       color: #fff;
-      background: #17AA52;
-      border: 0.1rem solid #17AA52;
+      background: #337ab7;
+      border: 0.1rem solid #337ab7;
       border-radius: 0.3rem;
     }
 

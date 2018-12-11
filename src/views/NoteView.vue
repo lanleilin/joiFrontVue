@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'note-view',
@@ -70,20 +70,20 @@ export default {
       isDisabled: false,        // Disabled submit button
       noteState: '创建',
       error: '',                // Verification results
-      noteFrom:{
-        title:'',
-        description:'',
-        address:''
+      noteFrom: {
+        title: '',
+        description: '',
+        address: ''
       }
     }
   },
   methods: {
-    createNote(){
+    createNote () {
       // console.log(this.noteFrom)
       this.$store.dispatch('activities/createNote', this.noteFrom)
       // this.createNote(this.noteFrom)
     },
-    ...mapActions(["createNote"])
+    ...mapActions(['createNote'])
   }
 }
 </script>
@@ -144,7 +144,7 @@ export default {
       text-align: center;
       color: #fff;
       background: #337ab7;
-      border: 0.1rem solid #17AA52;
+      border: 0.1rem solid #337ab7;
       border-radius: 0.3rem;
     }
 

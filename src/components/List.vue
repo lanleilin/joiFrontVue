@@ -10,10 +10,11 @@
           <p>{{item.manufacturer | subStr}}</p>
         </div>
         <div class="author">
-          <span class="name">{{item.price}}</span>
-          <span class="label" v-if="item.price">
-            本活动来自栏目 {{item.price}}
-          </span>
+          <span class="created-at">created at</span>
+          <div class="label">
+            <span class="main-btn dkGray">删除</span>
+            <a :href="item.price" target="blank" class="address main-btn">link</a>
+          </div>
         </div>
       </router-link>
     </template>
@@ -45,7 +46,7 @@ export default {
   },
   data () {
     return {
-      imgSrc:'/static/images/cat/hearMeRoar.jpg'
+      imgSrc: '/static/images/cat/hearMeRoar.jpg'
     }
   },
   filters: {
@@ -59,12 +60,26 @@ export default {
 
 <style lang='scss' scoped>
 .list {
+  .main-btn{
+    padding: 5px 15px;
+    color: #337ab7;
+    text-align: center;
+    border-color: transparent;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background: #f6f6f6;
+  }
+  .dkGray{
+    color: darkgray;
+  }
   .thumbnail {
     position: relative;
     display: block;
     padding: 2.5rem 1.8rem 2.5rem 0;
     margin-left: 1.8rem;
-
+    .address,.created-at{
+      color: #337ab7;
+    }
     .content {
       overflow: hidden;
       margin-bottom: 1rem;
@@ -78,6 +93,7 @@ export default {
       font-size: 1.7rem;
       font-weight: 500;
       color: #494949;
+      width: 62%;
     }
 
     p {
@@ -91,7 +107,7 @@ export default {
     img {
       float: right;
       width: 25.6%;
-      height: 8.678rem;
+      // height: 8.678rem;
       margin-left: 2.5rem;
     }
 
