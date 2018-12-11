@@ -2,7 +2,8 @@
   <div class="note-view">
       <h1 class="title">Note</h1>
       <form>
-        <p v-if="formTip" class="tip error">{{formTip}}</p>
+        <p v-if="formTip.type==='error'" class="tip msgError">{{formTip.msg}}</p>
+        <p v-if="formTip.type==='success'" class="tip msgSuccess">{{formTip.msg}}</p>
         <div class="form-alias">
           <label>
             <strong>标题</strong>
@@ -56,6 +57,7 @@
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'note-view',
@@ -64,7 +66,10 @@ export default {
       isComplete: false,        // Registration completed
       isDisabled: false,        // Disabled submit button
       noteState: '创建',
-      formTip: '',                // noteForm error msg
+      formTip: {
+        type:'',
+        msg:''
+      },                // noteForm error msg
       error: '',                // Verification results
       noteFrom: {
         title: '',
@@ -79,23 +84,39 @@ export default {
       if (this.validateForm(form)) {
         this.$store.dispatch('createNote', form).then(res => {
           console.log('ccccccreateNote', res)
+          // loadMore
+          this.loadMore()
+          this.formTip={
+            type:'success',
+            msg:'ssssssuccess'
+          }
+          this.noteFrom={}
         }).catch(error => {
+          this.formTip={
+            type:'error',
+            msg:error
+          }
           console.log('ccccccccreateNote err', error)
         })
       }
-      // this.$store.dispatch('createNote', form)
     },
     validateForm (form) {
       if (form.title === '' || form.description === '' || form.address === '') {
-        this.formTip = '请填写完整'
+        this.formTip={
+          type:'error',
+          msg:'请填写完整'
+        }
         return false
       }
       return true
     },
     clearTip () {
-      this.formTip = ''
-    }
-    // ...mapActions(['testlog'])
+      this.formTip={
+          type:'',
+          msg:''
+        }
+    },
+    ...mapActions(['loadMore'])
   }
 }
 </script>
@@ -173,8 +194,11 @@ export default {
       text-align: center;
     }
 
-    .error {
+    .msgError {
       color: #ff0000;
+    }
+    .msgSuccess {
+      color: rgb(59, 169, 77);
     }
   }
 
