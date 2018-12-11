@@ -1,13 +1,8 @@
 <template>
   <div class="note-view">
-    <template v-if="isComplete">
-      <h1 class="title">注册成功</h1>
-      <p class="tip">继续create</p>
-    </template>
-    <template v-else>
       <h1 class="title">Note</h1>
       <form>
-        <p v-if="error" class="tip error">{{error}}</p>
+        <p v-if="formTip" class="tip error">{{formTip}}</p>
         <div class="form-alias">
           <label>
             <strong>标题</strong>
@@ -15,6 +10,7 @@
               v-model.trim="noteFrom.title"
               type="text"
               name="title"
+              :autofocus="true" 
               placeholder="标题">
           </label>
         </div>
@@ -35,6 +31,7 @@
               v-model.trim="noteFrom.address"
               type="text"
               name="address"
+              @keyup.enter="createNote()"
               placeholder="地址">
           </label>
         </div>
@@ -50,17 +47,16 @@
         </div>
       </form>
       <div class="footer">
-        <div class="agreement">我信了你的鬼，你这个喵喵坏的很</div>
+        <div class="agreement" @click="clearTip()">我信了你的鬼，你这个喵喵坏的很</div>
         <div class="btns">
           <router-link :to="{name: 'HomeView'}" replace>JOI HOME</router-link>
         </div>
       </div>
-    </template>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'note-view',
@@ -69,6 +65,7 @@ export default {
       isComplete: false,        // Registration completed
       isDisabled: false,        // Disabled submit button
       noteState: '创建',
+      formTip: '',                // noteForm error msg
       error: '',                // Verification results
       noteFrom: {
         title: '',
@@ -79,11 +76,23 @@ export default {
   },
   methods: {
     createNote () {
-      // console.log(this.noteFrom)
-      this.$store.dispatch('/activities/createNote', this.noteFrom)
-      // this.createNote(this.noteFrom)
+      let form = this.noteFrom
+      if (this.validateForm(form)) {
+        this.$store.dispatch('createNote', form)
+      }
+      // this.$store.dispatch('createNote', form)
     },
-    ...mapActions(['createNote'])
+    validateForm (form) {
+      if (form.title === '' || form.description === '' || form.address === '') {
+        this.formTip = '请填写完整'
+        return false
+      }
+      return true
+    },
+    clearTip () {
+      this.formTip = ''
+    }
+    // ...mapActions(['testlog'])
   }
 }
 </script>
@@ -146,6 +155,7 @@ export default {
       background: #337ab7;
       border: 0.1rem solid #337ab7;
       border-radius: 0.3rem;
+      outline: none;
     }
 
     .disabled {
@@ -157,6 +167,7 @@ export default {
     .tip {
       font-size: 1.4rem;
       color: #aaa;
+      text-align: center;
     }
 
     .error {

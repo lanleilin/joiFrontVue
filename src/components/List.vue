@@ -39,8 +39,6 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
-import request from 'superagent'
 
 export default {
   name: 'list',
@@ -68,28 +66,13 @@ export default {
       this.noteFrom.id = id
       this.isDelDialog = true
     },
-    confirmDel1 () {
-      console.log('delete', this.noteFrom.id)
-      this.$store.dispatch('activities/updateNote', this.noteFrom)
-      // this.isDelDialog=false
-    },
     confirmDel () {
-      let form = this.noteFrom
-      return new Promise((resolve, reject) => {
-        request
-          .put('/api/products/' + form.id)
-          .then(res => {
-            console.log('updateNote', res)
-            resolve(res)
-          }, err => {
-            reject(err)
-          })
-      })
+      this.$store.dispatch('updateNote', this.noteFrom)
+      // this.isDelDialog=false
     },
     cancealDel () {
       this.isDelDialog = false
-    },
-    ...mapActions(['updateNote'])
+    }
 
   },
   filters: {

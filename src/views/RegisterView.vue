@@ -78,7 +78,7 @@
       <div class="footer">
         <div class="agreement">点击「注册」代表你已阅读并同意用户使用协议</div>
         <div class="btns">
-          <a href="#">下载JoiApp</a>
+          <router-link :to="{name: 'HomeView'}" replace>JOI</router-link>
         </div>
       </div>
     </template>

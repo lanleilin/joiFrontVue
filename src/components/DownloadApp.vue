@@ -1,7 +1,7 @@
 <template>
   <div class="download-app">
     <div class="info">
-      <img src="../assets/unicorn_logo.png" alt="下载Joi">
+      <img src="../assets/unicorn_logo.png" alt="uicorn Joi">
       <div class="info-content">
         <router-link :to="{name: 'HomeView'}" replace><strong>JOI</strong></router-link>
       </div>

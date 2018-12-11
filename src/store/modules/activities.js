@@ -23,12 +23,10 @@ const actions = {
    * updateNote
    * new Promise((resolve, reject) => {})
    */
-  updateNote (form) {
-    console.log('form', form)
-    console.log('id', form.id)
+  updateNote ({ commit }, payload) {
     return new Promise((resolve, reject) => {
       request
-        .put('/api/products/' + form.id)
+        .put('/api/products/' + payload.id)
         .then(res => {
           console.log('updateNote', res)
           resolve(res)
@@ -41,15 +39,14 @@ const actions = {
    * createNote
    * new Promise((resolve, reject) => {})
    */
-  createNote (form) {
-    console.log('form', form)
+  createNote ({ commit }, payload) {
     return new Promise((resolve, reject) => {
       request
         .post('/api/products')
         .send({
-          name: form.title,
-          manufacturer: form.description,
-          price: form.address
+          name: payload.title,
+          manufacturer: payload.description,
+          price: payload.address
         })
         .then(res => {
           console.log('createNote', res)

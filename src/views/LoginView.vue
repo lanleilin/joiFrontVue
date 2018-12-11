@@ -56,7 +56,7 @@
       <div class="more-login">使用其他方式登录 &amp; 找回密码</div>
       <div class="btns">
         <router-link :to="{name: 'RegisterView'}">注册Joi帐号</router-link>
-        <a href="#">下载JoiApp</a>
+        <router-link :to="{name: 'HomeView'}" replace>JOI</router-link>
       </div>
     </div>
   </div>
