@@ -9,7 +9,14 @@ const state = {
 const mutations = {
   loadMore (state, payload) {
     // state.events = state.events.concat(payload.res)
-    state.events = payload.res
+    // state.events = payload.res
+    let loadArr = []
+    for (let i = 0; i < payload.res.length; i++) {
+      if (payload.res[i].name) {
+        loadArr.push(payload.res[i])
+      }
+    }
+    state.events = loadArr
   },
   getSingleEvent (state, payload) {
     state.eventItem = payload.res

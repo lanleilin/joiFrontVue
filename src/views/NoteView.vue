@@ -66,9 +66,11 @@ export default {
       isComplete: false,        // Registration completed
       isDisabled: false,        // Disabled submit button
       noteState: '创建',
+      // 允许创建
+      isCreateAble: true,
       formTip: {
-        type:'',
-        msg:''
+        type: '',
+        msg: ''
       },                // noteForm error msg
       error: '',                // Verification results
       noteFrom: {
@@ -86,35 +88,35 @@ export default {
           console.log('ccccccreateNote', res)
           // loadMore
           this.loadMore()
-          this.formTip={
-            type:'success',
-            msg:'ssssssuccess'
+          this.formTip = {
+            type: 'success',
+            msg: 'ssssssuccess'
           }
-          this.noteFrom={}
+          this.noteFrom = {}
         }).catch(error => {
-          this.formTip={
-            type:'error',
-            msg:error
+          this.formTip = {
+            type: 'error',
+            msg: error
           }
           console.log('ccccccccreateNote err', error)
         })
       }
     },
     validateForm (form) {
-      if (form.title === '' || form.description === '' || form.address === '') {
-        this.formTip={
-          type:'error',
-          msg:'请填写完整'
+      if (!form.title || !form.description || !form.address) {
+        this.formTip = {
+          type: 'error',
+          msg: '请填写完整'
         }
         return false
       }
       return true
     },
     clearTip () {
-      this.formTip={
-          type:'',
-          msg:''
-        }
+      this.formTip = {
+        type: '',
+        msg: ''
+      }
     },
     ...mapActions(['loadMore'])
   }
