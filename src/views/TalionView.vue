@@ -13,33 +13,33 @@
     <ul class="has-header">
       <li>
         <div>
-          <a href="#" target="_blank">
-            <strong style="color: rgb(35, 132, 232);">电影</strong>
-            <span>影院热映</span>
+          <a href="https://www.zhihu.com/collections/mine" target="_blank">
+            <strong style="color: rgb(35, 132, 232);">知乎</strong>
+            <span>我的收藏</span>
           </a>
-          <a href="#" target="_blank">
-            <strong style="color: rgb(230, 70, 126);">同城</strong>
-            <span>周末活动</span>
+          <a href="https://translate.google.cn/#view=home&op=translate&sl=zh-CN&tl=en" target="_blank">
+            <strong style="color: rgb(230, 70, 126);">翻译</strong>
+            <span>谷歌翻译</span>
           </a>
-          <a href="#" target="_blank">
-            <strong style="color: rgb(159, 120, 96);">阅读</strong>
-            <span>电子书</span>
+          <a href="https://juejin.im/timeline" target="_blank">
+            <strong style="color: rgb(159, 120, 96);">掘金</strong>
+            <span>timeline</span>
           </a>
-          <a href="#" target="_blank">
-            <strong style="color: rgb(225, 100, 77);">东西</strong>
-            <span>心爱之物</span>
+          <a href="https://home.cnblogs.com/u/rlann/" target="_blank">
+            <strong style="color: rgb(225, 100, 77);">博客</strong>
+            <span>博客园</span>
           </a>
         </div>
       </li>
       <li>
         <div>
-          <a href="#" target="_blank">
-            <strong style="color: rgb(122, 106, 219);">电视</strong>
-            <span>正在热播</span>
+          <a href="https://www.baidu.com/" target="_blank">
+            <strong style="color: rgb(122, 106, 219);">百度</strong>
+            <span>emmmm</span>
           </a>
-          <a href="#" target="_blank">
-            <strong style="color: rgb(42, 184, 204);">小组</strong>
-            <span>志趣相投</span>
+          <a href="https://m.bilibili.com/index.html" target="_blank">
+            <strong style="color: rgb(42, 184, 204);">B站</strong>
+            <span>bilibili</span>
           </a>
           <a href="#" target="_blank">
             <strong style="color: rgb(87, 116, 197);">游戏</strong>
@@ -75,9 +75,9 @@
           </a>
         </router-link>
 
-          <a href="#" target="_blank">
-            <strong style="color: rgb(66, 189, 86);">市集</strong>
-            <span>购买原创</span>
+          <a href="https://www.tmall.com/" target="_blank">
+            <strong style="color: rgb(66, 189, 86);">天猫</strong>
+            <span>takeMyMoney</span>
           </a>
         </div>
       </li>

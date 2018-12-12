@@ -51,7 +51,7 @@
         <div class="agreement" @click="clearTip()">我信了你的鬼，你这个喵喵坏的很</div>
         <div class="btns">
           <router-link :to="{name: 'HomeView'}" replace>JOI HOME</router-link>
-        </div>
+        </div>  
       </div>
   </div>
 </template>

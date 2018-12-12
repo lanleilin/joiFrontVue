@@ -19,8 +19,7 @@
         </template>
       </div>
       <div class="nav-item">
-        <a href="https://movie.douban.com/">使用桌面版</a><!-- replace blank
-        --><a href="#">使用Joi App</a>
+        <a href="#">使用桌面版</a><a href="#">JOI</a>
       </div>
     </div>
     <!-- Quick start nav -->
