@@ -1,7 +1,11 @@
 <template>
   <div class="sub-nav">
-    <div class="msgDialog">
-      <h1>this is msg</h1>
+   
+    <div v-if="msgObj.type==='error'" class="msgDialogErr msgError">
+      <h1>{{msgObj.msg}}</h1>
+    </div>
+     <div v-if="msgObj.type==='success'" class="msgDialog msgSuccess">
+      <h1>{{msgObj.msg}}</h1>
     </div>
     <!-- Bottom nav -->
     <div class="navBottom" v-if="mold === 'navBottom'">
@@ -58,7 +62,13 @@ export default {
     }
   },
   data () {
-    return {}
+    return {
+      msgFlag:true,
+      msgObj:{
+        type:'',
+        msg:''
+      }
+    }
   },
   computed: {
     currentLink: function () {
@@ -72,16 +82,34 @@ export default {
   },
   methods: {
     clicklog () {
-      console.log('clicklog1111')
-      request
-        // .get("/api/testTxt")
-        .get('/api/products')
-        // .use(jsonp)
-        .end((err, res) => {
-          if (!err) {
-            console.log(res)
-          }
-        })
+      console.log('clicklog1111',this.msgObj['type'])
+      if(this.msgObj['type']==='error'){
+        this.msgObj['type']=''
+        this.msgObj={
+          type:'success',
+          msg:'hello world'
+        }
+      }else if(this.msgObj['type']==='success'){
+        console.log('in err')
+
+        this.msgObj={
+          type:'error',
+          msg:'goodbye world'
+        }
+      }else{
+        this.msgObj={
+          type:'success',
+          msg:'hello world'
+        }
+      }
+
+      // request
+      //   .get('/api/products')
+      //   .end((err, res) => {
+      //     if (!err) {
+      //       console.log(res)
+      //     }
+      //   })
     },
     logout () {
       this.$store.commit({

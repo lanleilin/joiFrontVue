@@ -1,0 +1,40 @@
+@keyframes msgBounce {
+  0% {
+    top: -200px;
+    opacity: 1;
+  }
+  94% {
+    top: 94px;
+    opacity: 1;
+
+  }
+  98% {
+    top: 98px;
+    opacity: 0;
+
+  }
+  100% {
+    top: -100px;
+    opacity: 0;
+  }
+}
+@keyframes msgBounceErr {
+  0% {
+    top: -200px;
+    opacity: 1;
+  }
+  94% {
+    top: 94px;
+    opacity: 1;
+
+  }
+  98% {
+    top: 98px;
+    opacity: 0;
+
+  }
+  100% {
+    top: -100px;
+    opacity: 0;
+  }
+}
