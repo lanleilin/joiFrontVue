@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'list',
@@ -67,8 +67,8 @@ export default {
         id: ''
       },
       formTip: {
-        type:'',
-        msg:''
+        type: '',
+        msg: ''
       },
       imgSrc: '/static/images/cat/hearMeRoar.jpg'
     }
@@ -83,19 +83,19 @@ export default {
       // this.isDelDialog=false
       this.$store.dispatch('updateNote', this.noteFrom).then(res => {
           // success close panel
-          this.loadMore()
-          this.formTip={
-            type:'success',
-            msg:'ssssssuccess'
-          }
-          this.loadMore()
-        }).catch(error => {
-          this.formTip={
-            type:'error',
-            msg:error
-          }
-          console.log('ccccccccreateNote err', error)
-        })
+        this.loadMore()
+        this.formTip = {
+          type: 'success',
+          msg: 'ssssssuccess'
+        }
+        this.loadMore()
+      }).catch(error => {
+        this.formTip = {
+          type: 'error',
+          msg: error
+        }
+        console.log('ccccccccreateNote err', error)
+      })
     },
     cancealDel () {
       this.isDelDialog = false
@@ -113,70 +113,7 @@ export default {
 
 <style lang='scss' scoped>
 .list {
-  .modal-wrapper{
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    overflow: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    -webkit-overflow-scrolling: touch;
-    outline: 0;
-    background: rgba(55, 55, 55, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .modal-dialog{
-    width: 80%;
-    max-width: 400px;
-    background: #fff;
-    padding: 60px 20px;
-    text-align: center;
-  }
-  .gray-btn{
-    padding: 5px 15px;
-    color: #8590a6;
-    text-align: center;
-    border-color: transparent;
-    border-radius: 3px;
-    box-sizing: border-box;
-    background: #f6f6f6;
-  }
-  .blue-btn{
-    padding: 5px 15px;
-    text-align: center;
-    border-color: transparent;
-    border-radius: 3px;
-    box-sizing: border-box;
-    background: rgba(0,132,255,.15);
-    color: #0084ff;
-  }
-  .cl-dkg{
-    color: darkgray;
-  }
-  
-  .theme-blue{
-    color: #36538b !important;
-  }
-  .filter-gray{
-    filter: grayscale(100%);
-  }
-  .tip {
-    font-size: 1.4rem;
-    color: #aaa;
-    text-align: center;
-  }
 
-  .msgError {
-    color: #ff0000;
-  }
-  .msgSuccess {
-    color: rgb(59, 169, 77);
-  }
   .note-title{
     color: #1a1a1a;
     font-weight: 600;

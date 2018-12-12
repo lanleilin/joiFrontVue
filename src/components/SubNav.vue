@@ -1,5 +1,8 @@
 <template>
   <div class="sub-nav">
+    <div class="msgDialog">
+      <h1>this is msg</h1>
+    </div>
     <!-- Bottom nav -->
     <div class="navBottom" v-if="mold === 'navBottom'">
       <div class="nav-item">
@@ -44,7 +47,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import request from "superagent"
+import request from 'superagent'
 
 export default {
   name: 'sub-nav',
@@ -68,17 +71,17 @@ export default {
     ...mapGetters(['currentUser'])
   },
   methods: {
-    clicklog() {
-      console.log("clicklog1111");
+    clicklog () {
+      console.log('clicklog1111')
       request
         // .get("/api/testTxt")
-        .get("/api/products")
+        .get('/api/products')
         // .use(jsonp)
         .end((err, res) => {
           if (!err) {
-            console.log(res);
+            console.log(res)
           }
-        });
+        })
     },
     logout () {
       this.$store.commit({

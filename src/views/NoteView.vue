@@ -98,7 +98,7 @@ export default {
             type: 'error',
             msg: error
           }
-          console.log('ccccccccreateNote err', error)
+          console.log('ccccccccreateNote-err', error)
         })
       }
     },

@@ -24,16 +24,16 @@
 </template>
 
 <script>
-import request from "superagent";
+import request from 'superagent'
 // import jsonp from 'superagent-jsonp'
 export default {
-  name: "banner",
+  name: 'banner',
   props: {
     // Banner title
     title: {
       type: String,
       required: false,
-      default: "打开App, 浏览更多"
+      default: '打开App, 浏览更多'
     },
     // Ad banner
     adImg: {
@@ -41,23 +41,23 @@ export default {
       required: false
     }
   },
-  data() {
-    return {};
+  data () {
+    return {}
   },
   methods: {
-    testlog() {
-      console.log("testlog");
+    testlog () {
+      console.log('testlog')
       request
-        .get("/api/testLog")
+        .get('/api/testLog')
         // .use(jsonp)
         .end((err, res) => {
           if (!err) {
-            console.log(res);
+            console.log(res)
           }
-        });
+        })
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
