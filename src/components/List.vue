@@ -24,7 +24,7 @@
           <p class="note-des">{{item.manufacturer | subStr}}</p>
         </div>
         <div class="author">
-          <span class="created-at">{{item.createdAt}}</span>
+          <span class="created-at">{{formatTime(item.createdAt)}}</span>
           <!-- <span class="created-at">{{item.createdAt}}</span> -->
           <div class="label">
             <span class="gray-btn" @click="showDelModal(item.id)">删除</span>
