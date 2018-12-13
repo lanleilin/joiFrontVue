@@ -13,7 +13,7 @@
     <ul class="has-header">
       <li>
         <div>
-          <a href="https://www.zhihu.com/collections/mine" target="_blank">
+          <a href="https://www.zhihu.com/" target="_blank">
             <strong style="color: rgb(35, 132, 232);">知乎</strong>
             <span>我的收藏</span>
           </a>
@@ -69,15 +69,14 @@
         </router-link>
         <router-link :to="{ name: 'HomeView'}">
           <a href="javascript:" target="_blank" @click="closeTalion">
-
-                        <strong style="color: rgb(89, 108, 221);">应用</strong>
+              <strong style="color: rgb(89, 108, 221);">应用</strong>
             <span>玩手机</span>
           </a>
         </router-link>
 
           <a href="https://www.tmall.com/" target="_blank">
             <strong style="color: rgb(66, 189, 86);">天猫</strong>
-            <span>takeMyMoney</span>
+            <span>shut up</span>
           </a>
         </div>
       </li>
@@ -87,35 +86,35 @@
 </template>
 
 <script>
-import SubNav from "../components/SubNav";
+import SubNav from '../components/SubNav'
 
 export default {
-  name: "talion-view",
+  name: 'talion-view',
   components: { SubNav },
-  data() {
+  data () {
     return {
-      queryStr: ""
-    };
+      queryStr: ''
+    }
   },
   methods: {
-    closeTalion: function() {
-      this.$emit("closeTalion");
+    closeTalion: function () {
+      this.$emit('closeTalion')
     },
     /**
      * Going to search view
      * params: q
      */
-    goSearch: function() {
-      this.$emit("closeTalion");
+    goSearch: function () {
+      this.$emit('closeTalion')
       this.$router.push({
-        name: "SearchView",
+        name: 'SearchView',
         params: {
           q: this.queryStr
         }
-      });
+      })
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
