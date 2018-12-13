@@ -51,6 +51,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import request from 'superagent'
+import utils from '../utils/kit.js'
 
 export default {
   name: 'sub-nav',
@@ -62,10 +63,10 @@ export default {
   },
   data () {
     return {
-      msgFlag:true,
-      msgObj:{
-        type:'',
-        msg:''
+      msgFlag: true,
+      msgObj: {
+        type: '',
+        msg: ''
       }
     }
   },
@@ -81,34 +82,17 @@ export default {
   },
   methods: {
     clicklog () {
-      console.log('clicklog1111',this.msgObj['type'])
-      if(this.msgObj['type']==='error'){
-        this.msgObj['type']=''
-        this.msgObj={
-          type:'success',
-          msg:'hello world'
-        }
-      }else if(this.msgObj['type']==='success'){
-        console.log('in err')
-
-        this.msgObj={
-          type:'error',
-          msg:'goodbye world'
-        }
-      }else{
-        this.msgObj={
-          type:'success',
-          msg:'hello world'
-        }
-      }
-
-      // request
-      //   .get('/api/products')
-      //   .end((err, res) => {
-      //     if (!err) {
-      //       console.log(res)
-      //     }
-      //   })
+      console.log('clicklog1111', this.formatTime(1544696557749))
+      request
+        .get('/api/products')
+        .end((err, res) => {
+          if (!err) {
+            console.log('products', res.body.products)
+          }
+        })
+    },
+    formatTime (time) {
+      return utils.formatTime(time)
     },
     logout () {
       this.$store.commit({

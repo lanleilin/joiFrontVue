@@ -6,6 +6,7 @@ import router from './router'
 import store from './store'
 import vueScrollBehavior from 'vue-scroll-behavior'
 import 'normalize.css'
+import './utils/kit.js'
 
 Vue.use(vueScrollBehavior, { router: router })
 

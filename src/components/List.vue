@@ -24,7 +24,8 @@
           <p class="note-des">{{item.manufacturer | subStr}}</p>
         </div>
         <div class="author">
-          <span class="created-at">created at</span>
+          <span class="created-at">{{item.createdAt}}</span>
+          <!-- <span class="created-at">{{item.createdAt}}</span> -->
           <div class="label">
             <span class="gray-btn" @click="showDelModal(item.id)">删除</span>
             <a :href="item.price" target="blank" class="address blue-btn">link</a>
@@ -47,6 +48,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+import utils from '../utils/kit.js'
 
 export default {
   name: 'list',
@@ -99,6 +101,9 @@ export default {
     },
     cancealDel () {
       this.isDelDialog = false
+    },
+    formatTime (time) {
+      return utils.formatTime(time)
     },
     ...mapActions(['loadMore'])
   },
