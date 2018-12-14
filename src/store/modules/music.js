@@ -57,7 +57,7 @@ const actions = {
         subtype: 'group',
         id: 1234,
         images: {
-          small: 'https://img3.doubanio.com/icon/g117205-2.jpg'
+          small: 'http://img0.imgtn.bdimg.com/it/u=3253859620,700212602&fm=26&gp=0.jpg'
         },
         group_member: '4373',
         group_topic: {
