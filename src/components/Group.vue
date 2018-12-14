@@ -15,7 +15,7 @@
               <span>{{item.title}}</span>
               <rating v-if="item.rating" :rating="item.rating"></rating>
             </div>
-            <span v-if="item.group_member" class="group-member">20005人</span>
+            <span v-if="item.group_member" class="group-member">123人</span>
           </div>
           <div v-if="item.group_topic" class="group-topic">
             <span>{{item.group_topic.time}}</span>

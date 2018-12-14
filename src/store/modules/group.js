@@ -27,102 +27,61 @@ const actions = {
     // Mock data
     let dataA = [
       {
-        title: '成都租房',
+        title: 'hear me roar',
         subtype: 'group',
         id: 1234,
         images: {
-          small: 'https://img3.doubanio.com/icon/g117205-2.jpg'
+          small: 'https://img3.doubanio.com/icon/g573696-2.jpg'
         },
         group_member: '43736',
         group_topic: {
-          title: '天府四街临江苑套一出租个人 无中介费噢',
+          title: 'by what right a wolf judges a lion',
           time: '3分钟前更新：'
         }
       },
       {
-        title: '北京租房（非中介）',
+        title: '苟利国家生死以',
         subtype: 'group',
         id: 1234,
         images: {
-          small: 'https://img3.doubanio.com/icon/g279962-3.jpg'
+          small: 'https://img3.doubanio.com/icon/g573696-2.jpg'
         },
         group_member: '53736',
         group_topic: {
-          title: '9号线丰台南路站看丹桥新华街四里，次卧出租，押一付一',
+          title: '岂因祸福避趋之',
           time: '刚刚更新：'
         }
       },
       {
-        title: '深圳福田租房（个人房源免费推广）',
+        title: 'unbent unbow unbroken',
         subtype: 'group',
         id: 1234,
         images: {
-          small: 'https://img3.doubanio.com/icon/g117205-2.jpg'
+          small: '/static/images/cat/unbentUnbowUnbroken.jpg'
         },
         group_member: '4373',
         group_topic: {
-          title: '福田福民岗厦复式单间整租，2800，可短租',
+          title: 'go on,do you duty',
           time: '刚刚更新：'
         }
       }
     ]
     let dataB = [
       {
-        title: '想不想很多人帮你！',
+        title: 'everything you want to hear',
         subtype: 'group',
         id: 1234,
         images: {
-          small: 'https://img1.doubanio.com/icon/g14859-17.jpg'
+          small: 'https://img3.doubanio.com/icon/g573696-2.jpg'
         },
         group_member: '431999',
         group_topic: {
-          title: '想转专业去学日语大家有神马建议？',
+          title: 'quiet an experience to live in fear,is\'t it?',
           time: '4分钟前更新：'
         }
       },
       {
-        title: '我们都有秘密',
-        subtype: 'group',
-        id: 1234,
-        images: {
-          small: 'https://img5.doubanio.com/icon/g399184-6.jpg'
-        },
-        group_member: '96960',
-        group_topic: {
-          title: '北京 征个女生',
-          time: '1分钟前更新：'
-        }
-      },
-      {
-        title: '文艺青年装逼会',
-        subtype: 'group',
-        id: 1234,
-        images: {
-          small: 'https://img1.doubanio.com/icon/g17947-8.jpg'
-        },
-        group_member: '43736',
-        group_topic: {
-          title: '文艺青年装逼会',
-          time: '3分钟前更新：'
-        }
-      }
-    ]
-    let dataC = [
-      {
-        title: '我爱代购&amp;海淘☺微信号',
-        subtype: 'group',
-        id: 1234,
-        images: {
-          small: 'https://img5.doubanio.com/icon/g37539-6.jpg'
-        },
-        group_member: '431999',
-        group_topic: {
-          title: '靠谱小日代 薇信直播定位+邮寄单号 可拼邮可直邮 保证品 ～笔芯',
-          time: '4分钟前更新：'
-        }
-      },
-      {
-        title: 'PiaPia团✿团购',
+        title: 'fiery the angels fell',
         subtype: 'group',
         id: 1234,
         images: {
@@ -130,21 +89,62 @@ const actions = {
         },
         group_member: '96960',
         group_topic: {
-          title: '【想买】之前团过的包要吗？',
+          title: 'deep thunder rolled near their shores',
+          time: 'burning with the fire of Orc'
+        }
+      },
+      {
+        title: 'fire and blood',
+        subtype: 'group',
+        id: 1234,
+        images: {
+          small: 'https://img3.doubanio.com/icon/g573696-2.jpg'
+        },
+        group_member: '43736',
+        group_topic: {
+          title: 'so please tell me where before there is nothing but love',
+          time: '3分钟前更新：'
+        }
+      }
+    ]
+    let dataC = [
+      {
+        title: 'relax,take it easy',
+        subtype: 'group',
+        id: 1234,
+        images: {
+          small: 'https://img3.doubanio.com/icon/g573696-2.jpg'
+        },
+        group_member: '431999',
+        group_topic: {
+          title: 'you ve been wonderful in all that you can be',
+          time: 'but it hurts when you say you understand me'
+        }
+      },
+      {
+        title: 'when play the game of thrones',
+        subtype: 'group',
+        id: 1234,
+        images: {
+          small: 'https://img3.doubanio.com/icon/g573696-2.jpg'
+        },
+        group_member: '96960',
+        group_topic: {
+          title: 'you live or you die,there is no middle ground',
           time: '1小时前更新：'
         }
       },
       {
-        title: '我们一起海淘',
+        title: 'one taste of real world',
         subtype: 'group',
         id: 1234,
         images: {
-          small: 'https://img3.doubanio.com/icon/g25704-22.jpg'
+          small: '/static/images/cat/weDoNotSaw.jpg'
         },
         group_member: '743736',
         group_topic: {
-          title: '靠谱小日代 薇信直播定位+邮寄单号 可拼邮可直邮 保正品～笔芯',
-          time: '3分钟前更新：'
+          title: '',
+          time: 'from this day,until my last day'
         }
       }
     ]

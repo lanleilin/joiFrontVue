@@ -21,7 +21,7 @@
             <img :src="imgSrc" alt="cover">
           </router-link>
           <h3 class="note-title">{{item.name}}</h3>
-          <p class="note-des">{{item.manufacturer | subStr}}</p>
+          <p class="note-des">{{item.manufacturer}}</p>
         </div>
         <div class="author">
           <span class="created-at">{{item.createdAt}}</span>
@@ -118,14 +118,6 @@ export default {
 
 <style lang='scss' scoped>
 .list {
-
-  .note-title{
-    color: #1a1a1a;
-    font-weight: 600;
-  }
-  .note-des{
-    color: #1a1a1a;
-  }
   .thumbnail {
     position: relative;
     display: block;
@@ -137,7 +129,7 @@ export default {
       margin-bottom: 1rem;
     }
 
-    h3 {
+    .note-title {
       margin-top: 0;
       margin-bottom: 0.6rem;
       line-height: 1.41;
@@ -148,12 +140,13 @@ export default {
       width: 62%;
     }
 
-    p {
+    .note-des {
       line-height: 1.5;
       text-align: justify;
       color: #1a1a1a;
       font-size: 1.2rem;
-      overflow: hidden;
+      word-wrap: break-word;
+      // overflow: hidden;
     }
 
     img {

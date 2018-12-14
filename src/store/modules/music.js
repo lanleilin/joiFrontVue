@@ -53,7 +53,7 @@ const actions = {
         }
       },
       {
-        title: '深圳福田租房（个人房源免费推广）',
+        title: '深圳福田',
         subtype: 'group',
         id: 1234,
         images: {
