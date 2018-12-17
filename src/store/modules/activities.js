@@ -68,7 +68,6 @@ const actions = {
    * count: 3 default
    */
   loadMore ({commit, state}) {
-    // TODO
     request
       .get('/api/products')
       .end((err, res) => {

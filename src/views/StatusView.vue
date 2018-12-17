@@ -4,27 +4,27 @@
     <user-bar></user-bar>
     <div class="content-list">
       <card mold="quote" v-for="item in items" :key="item"></card>
-      <a class="list-link" href="#">显示更多广播</a>
+      <a class="list-link" href="#">show more br</a>
     </div>
     <download-app></download-app>
   </div>
 </template>
 
 <script>
-import Banner from "../components/Banner";
-import UserBar from "../components/UserBar";
-import Card from "../components/Card";
-import DownloadApp from "../components/DownloadApp";
+import Banner from '../components/Banner'
+import UserBar from '../components/UserBar'
+import Card from '../components/Card'
+import DownloadApp from '../components/DownloadApp'
 
 export default {
-  name: "status",
+  name: 'status',
   components: { Banner, UserBar, Card, DownloadApp },
-  data() {
+  data () {
     return {
-      items: new Array(10)
-    };
+      items: new Array(4)
+    }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

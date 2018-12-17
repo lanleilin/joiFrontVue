@@ -12,6 +12,7 @@
         "deploy": "gh-pages -d dist"
     },
     "dependencies": {
+        "axios": "^0.18.0",
         "normalize.css": "^5.0.0",
         "superagent": "^3.5.2",
         "superagent-jsonp": "^0.1.1",

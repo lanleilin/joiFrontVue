@@ -7,22 +7,46 @@
       <a href="#">
         <div class="user-info">
           <strong>
-            Joi<span v-if="mold === 'quote'">写了日记</span>
+            Joi <span v-if="mold === 'quote'">sing a song</span>
           </strong>
-          <div class="timestamp">2017-03-01 19:30:41</div>
+          <div class="timestamp">{{time}}</div>
         </div>
       </a>
     </div>
     <div v-if="mold === 'quote'" class="article-card">
       <div class="title">
-        JoiApp 4.12.0 主要更新
+        相忘于江湖
       </div>
       <div class="detail">
-        - 可以写读书笔记了，同时支持编辑。随时随地，摘录怦然心动的段落，写下阅读时的随感。来写笔记吧，你...
+
+        OH——说尽了只剩一杯酒
+
+        OH——若醉了不过一滴泪
+
+        OH——看你不由衷的样子
+
+        OH——任时间风干眼泪却磨不掉孤独
+
+        我不怕红尘可笑，笑不尽无聊
+
+        谁能够穿过岁月不老
+
+        眼泪于谁去凭吊，谁又能知道
+
+        若与你痴做一场梦也好
+
+        反正最后是忘掉，谁忆今朝笑
+
+        何苦追问着情犹难了
+
+        不如把一杯高歌，我放声地歌
+
+        谁能听到谁又能够与我附和
+        
       </div>
     </div>
     <p v-if="mold === 'comment'" class="comment">
-      可以写读书笔记了，同时支持编辑。随时随地，摘录怦然心动的段落，写下阅读时的随感。来写笔记吧，你
+      谁能穿过岁月不老
     </p>
     <div class="info">
       <span class="btn like"><i>4</i></span>
@@ -34,6 +58,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'card',
   props: {
@@ -43,7 +68,9 @@ export default {
     }
   },
   data () {
-    return {}
+    return {
+      time: new Date().toLocaleDateString()
+    }
   }
 }
 </script>
