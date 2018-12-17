@@ -7,7 +7,7 @@
           <p v-if="formTip.type==='success'" class="tip msgSuccess">{{formTip.msg}}</p>
         </div>
         <div class="modal-btn">
-          <span class="gray-btn" @click="confirmDel()">确认删除</span>
+          <span class="gray-btn" v-if="formTip.type!=='success'" @click="confirmDel()">确认删除</span>
           <span class="blue-btn" @click="cancealDel()">close</span>
         </div>
         
@@ -100,6 +100,7 @@ export default {
       })
     },
     cancealDel () {
+      this.formTip['type'] = ''
       this.isDelDialog = false
     },
     formatTime (time) {

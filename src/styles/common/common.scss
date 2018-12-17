@@ -3,10 +3,13 @@
 html {
   font-size: 62.5%;
 }
-
+body{
+  background: #F6F6F6;
+}
 #app {
   max-width: 41.2rem;
   margin: 0 auto;
+  background: #fff;
 }
 
 .has-header {

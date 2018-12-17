@@ -22,8 +22,7 @@
 <style scoped>
 .download-app {
   padding: 0 0 2rem 0;
-  margin-top: 5rem;
-  margin-bottom: 3rem;
+  margin-top: 3rem;
   text-align: center;
   font-size: 1.5rem;
 }
