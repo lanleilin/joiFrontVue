@@ -8,6 +8,7 @@ body{
 }
 #app {
   max-width: 41.2rem;
+  min-height: 41.2rem;
   margin: 0 auto;
   background: #fff;
 }
@@ -59,6 +60,15 @@ $joi-dark-blue:#36538b;
   border-radius: 3px;
   box-sizing: border-box;
   background: #f6f6f6;
+}
+.darkgray-btn{
+  padding: 5px 15px;
+  color: #fff;
+  text-align: center;
+  border-color: transparent;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background: #8590A6;
 }
 .blue-btn{
   padding: 5px 15px;

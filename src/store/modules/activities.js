@@ -3,7 +3,8 @@ import request from 'superagent'
 const state = {
   events: [],
   temp: [],
-  eventItem: {}
+  eventItem: {},
+  timeLine: []
 }
 
 const mutations = {
@@ -17,6 +18,9 @@ const mutations = {
       }
     }
     state.events = loadArr
+  },
+  getTimeline (state, payload) {
+    state.timeLine = payload.res
   },
   getSingleEvent (state, payload) {
     state.eventItem = payload.res
@@ -76,6 +80,24 @@ const actions = {
           commit({
             type: 'loadMore',
             res: res.body.products
+          })
+        }
+      })
+  },
+  /**
+   * Loading more data
+   * skip: 3 default
+   * count: 3 default
+   */
+  getTimeline ({commit, state}) {
+    request
+      .get('/api/timeline')
+      .end((err, res) => {
+        if (!err) {
+          console.log('getTimeline', res.body.timeline)
+          commit({
+            type: 'getTimeline',
+            res: res.body.timeline
           })
         }
       })

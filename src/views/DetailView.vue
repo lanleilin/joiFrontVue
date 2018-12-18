@@ -1,51 +1,50 @@
 <template>
   <div class="detail-view has-header">
-    <banner title="NOTE DETAIL"></banner>
+    <!-- <banner title="NOTE DETAIL"></banner> -->
+    <div v-if="showStageDialog" class="modal-wrapper" >
+      <div class="modal-dialog">
+        <div class="modal-msg">
+          <p v-if="formTip.type==='error'" class="tip msgError">{{formTip.msg}}</p>
+          <p v-if="formTip.type==='success'" class="tip msgSuccess">{{formTip.msg}}</p>
+        </div>
+        <div class="line-form">
+          <input
+              v-model.trim="lineForm.time"
+              type="text"
+              name="time"
+              placeholder="time">
+          <input
+              v-model.trim="lineForm.stage"
+              type="text"
+              name="stage"
+              placeholder="stage">
+        </div>
+        <div class="modal-btn">
+          <span class="gray-btn" v-if="formTip.type!=='success'" @click="confirmStage()">确认</span>
+          <span class="blue-btn" @click="cancelStage()">close</span>
+        </div>
+        
+      </div>
+    </div>
     <template v-if="!showLoading">
-      <div class="info">
-        <h2>
-          {{eventItem.title}}
-          <span class="badge">{{eventItem.loc_name}}</span>
-        </h2>
-        <div class="poster">
-          <img :src="eventItem.image_hlarge" alt="">
-        </div>
-        <div class="detail">
-          <span>时间:&nbsp;&nbsp;</span>
-          <ul>
-            <li>{{eventItem.begin_time}}</li>
-            <li>{{eventItem.end_time}}</li>
-          </ul>
-        </div>
-        <div class="detail">
-          <span>地点:&nbsp;&nbsp;</span>
-          <ul>
-            <li>{{eventItem.address}}</li>
-          </ul>
-        </div>
-        <div class="detail">
-          <span>费用:&nbsp;&nbsp;</span>
-          <ul>
-            <li>{{eventItem.fee_str}}</li>
-          </ul>
-        </div>
-        <div class="detail">
-          <span>类型:&nbsp;&nbsp;</span>
-          <ul>
-            <li>{{eventItem.category_name}}</li>
-          </ul>
-        </div>
-        <div class="detail">
-          <span>更新时间:&nbsp;&nbsp;</span>
-          <ul>
-            <li v-if="eventItem.owner">{{eventItem.owner.name}}</li>
-          </ul>
-        </div>
-        <tags v-if="eventItem.tags" :items="eventItem.tags | toArray"></tags>
-        <div class="describe">
-          <h2>Note详情</h2>
-          <div v-if="eventItem.content" class="content" v-html="content"></div>
-        </div>
+      <div class="time-line">
+        <ul>
+          <li v-for="(timeItem,index) in timeLine">
+            <div class="line-time">{{timeItem.time}}</div>
+            <div :class="{linePending:timeItem.status==='pending'}" class="line-id">
+              <span>
+                {{index}}
+              </span>
+            </div>
+            <div class="line-stage">{{timeItem.stage}}</div>
+          </li>
+        </ul>
+      </div>
+      <div class="operate-bar">
+        <ul>
+          <li class="blue-btn" @click="showStage()">添加</li>
+          <li class="darkgray-btn">done</li>
+        </ul>
       </div>
       <download-app></download-app>
     </template>
@@ -65,7 +64,16 @@ export default {
   components: { Banner, Tags, DownloadApp, Loading },
   data () {
     return {
-      showLoading: true
+      showLoading: true,
+      showStageDialog: false,
+      formTip: {
+        type: '',
+        msg: ''
+      },
+      lineForm: {
+        time: '',
+        stage: ''
+      }
     }
   },
   filters: {
@@ -81,8 +89,39 @@ export default {
     },
     // Getting Vuex State from store/modules/activities
     ...mapState({
-      eventItem: state => state.activities.eventItem
+      eventItem: state => state.activities.eventItem,
+      timeLine: state => state.activities.timeLine
     })
+  },
+  mounted () {
+    this.getTimeline()
+  },
+  methods: {
+    showStage () {
+      this.showStageDialog = true
+    },
+    cancelStage () {
+      this.showStageDialog = false
+    },
+    confirmStage () {
+      let lineObj = {
+        status: 'pending',
+        time: 1545104763137,
+        stage: 'there are no happy endings'
+      }
+      this.timeLine.push(lineObj)
+    },
+    getTimeline () {
+      this.$store.dispatch('getTimeline').then(res => {
+        console.log('gggggggetTimeline', res)
+      }).catch(error => {
+        this.formTip = {
+          type: 'error',
+          msg: error
+        }
+        console.log('getTimeline-err', error)
+      })
+    }
   },
   created () {
     // Getting route params
@@ -101,6 +140,67 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.operate-bar{
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f6f6f6;
+  // border-bottom:1px solid #F0F2F7;
+  ul{
+    li{
+      display: inline-block;
+    }
+  }
+}
+.line-form{
+  margin: 10px 0;
+  input{
+    boder:1px solid black;
+  }
+}
+.linePending{
+  filter: grayscale(100%) !important; 
+}
+.time-line{
+  ul{
+    width: 100%;
+    padding: 1rem;
+    overflow: hidden;
+    box-sizing: border-box;
+    background: #f6f6f6;
+    li{
+      padding: 1rem 0;
+      float: left;
+      div{
+        width: 100%;
+        text-align: center;
+        padding: 2px 4px;
+        box-sizing: border-box;
+        color: #8590A6;
+      }
+    }
+    .line-id{
+      border-top: 2px solid #337ab7;
+      position: relative;
+      margin: 5px 0;
+      height: 0;
+      span{
+        position: absolute;
+        top: -9px;
+        margin-left: -8px;
+        height: 16px;
+        width: 16px;
+        border-radius: 16px;
+        color:#fff;
+        background: #337ab7;
+      }
+    }
+  }
+}
+
 .info {
   margin: 1rem;
 
@@ -131,26 +231,6 @@ export default {
       max-width: 22rem;
       height: auto;
     }
-  }
-}
-
-.detail {
-  margin-left: 3.3rem;
-  margin-bottom: 1rem;
-  min-height: 1.5em;
-  font-size: 1.4rem;
-  clear: left;
-
-  span {
-    float: left;
-    margin-left: -3.3rem;
-    line-height: 150%;
-    color: #666666;
-  }
-
-  ul {
-    list-style-position: outside;
-    margin-left: 0;
   }
 }
 
