@@ -76,7 +76,12 @@ export default {
       noteFrom: {
         title: '',
         description: '',
-        address: ''
+        address: '',
+        timeline: [{
+          status: 'pending',
+          time: 1545104763137,
+          stage: 'start'
+        }]
       }
     }
   },

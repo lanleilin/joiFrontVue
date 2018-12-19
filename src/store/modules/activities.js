@@ -56,7 +56,8 @@ const actions = {
         .send({
           name: payload.title,
           manufacturer: payload.description,
-          price: payload.address
+          price: payload.address,
+          timeline: JSON.stringify(payload.timeline)
         })
         .then(res => {
           console.log('createNote', res)
