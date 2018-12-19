@@ -7,8 +7,8 @@
           <p v-if="formTip.type==='success'" class="tip msgSuccess">{{formTip.msg}}</p>
         </div>
         <div class="modal-btn">
-          <span class="gray-btn" v-if="formTip.type!=='success'" @click="confirmDel()">确认删除</span>
-          <span class="blue-btn" @click="cancealDel()">close</span>
+          <span class="gray-btn-md" v-if="formTip.type!=='success'" @click="confirmDel()">确认删除</span>
+          <span class="blue-btn-md" @click="cancealDel()">close</span>
         </div>
         
       </div>
@@ -27,8 +27,8 @@
           <span class="created-at">{{formatTime(item.createdAt)}}</span>
           <!-- <span class="created-at">{{item.createdAt}}</span> -->
           <div class="label">
-            <span class="gray-btn" @click="showDelModal(item.id)">删除</span>
-            <a :href="item.price" target="blank" class="address blue-btn">link</a>
+            <span class="gray-btn-sm" @click="showDelModal(item.id)">删除</span>
+            <a :href="item.price" target="blank" class="address blue-btn-sm">link</a>
           </div>
         </div>
       </div>

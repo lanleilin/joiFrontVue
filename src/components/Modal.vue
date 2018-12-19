@@ -6,8 +6,8 @@
         <p v-if="formTip.type==='success'" class="tip msgSuccess">{{formTip.msg}}</p>
       </div>
       <div class="modal-btn">
-        <span class="gray-btn" @click="confirmDel()">确认删除</span>
-        <span class="blue-btn" @click="cancealDel()">close</span>
+        <span class="gray-btn-sm" @click="confirmDel()">确认删除</span>
+        <span class="blue-btn-sm" @click="cancealDel()">close</span>
       </div>
     </div>
 </template>

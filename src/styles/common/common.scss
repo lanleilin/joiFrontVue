@@ -52,7 +52,7 @@ a {
 }
 $joi-dark-blue:#36538b;
 // btn
-.gray-btn{
+.gray-btn-sm{
   padding: 5px 15px;
   color: #8590a6;
   text-align: center;
@@ -61,16 +61,40 @@ $joi-dark-blue:#36538b;
   box-sizing: border-box;
   background: #f6f6f6;
 }
-.darkgray-btn{
-  padding: 5px 15px;
+.gray-btn-md{
+  cursor: pointer;
+  width: 3.6rem;
+  padding: 0.8rem 1.4rem;
+  font-size: 1.6rem;
+  text-align: center;
+  color: #8590a6;
+  background: #f6f6f6;
+  border: .1rem solid #f6f6f6;
+  border-radius: .3rem;
+}
+.darkgray-btn-sm{
+  cursor: pointer;
+  width: 3.6rem;
+  padding: 0.8rem 1.4rem;
+  font-size: 1.6rem;
   color: #fff;
   text-align: center;
   border-color: transparent;
-  border-radius: 3px;
   box-sizing: border-box;
   background: #8590A6;
 }
-.blue-btn{
+.darkgray-btn-md{
+  cursor: pointer;
+  width: 3.6rem;
+  padding: 0.8rem 1.4rem;
+  font-size: 1.6rem;
+  text-align: center;
+  color: #fff;
+  background: #8590A6;
+  border: .1rem solid #8590A6;
+  border-radius: .3rem;
+}
+.blue-btn-sm{
   padding: 5px 15px;
   text-align: center;
   border-color: transparent;
@@ -78,6 +102,40 @@ $joi-dark-blue:#36538b;
   box-sizing: border-box;
   background: rgba(0,132,255,.15);
   color: #0084ff;
+}
+.blue-btn-md{
+  cursor: pointer;
+  width: 3.6rem;
+  padding: 0.8rem 1.4rem;
+  font-size: 1.6rem;
+  text-align: center;
+  color: #0084ff;
+  background: rgba(0,132,255,.15);
+  border: .1rem solid rgba(0,132,255,.15);
+  border-radius: .3rem;
+}
+.navy-btn-md{
+  cursor: pointer;
+  width: 3.6rem;
+  padding: 0.8rem 1.4rem;
+  font-size: 1.6rem;
+  text-align: center;
+  color: #fff;
+  background: #337ab7;
+  border: .1rem solid #337ab7;
+  border-radius: .3rem;
+}
+.navy-btn-lg{
+  cursor: pointer;
+  width: 100%;
+  padding: 1.2rem 2.6rem;
+  margin-top: 1rem;
+  font-size: 1.7rem;
+  text-align: center;
+  color: #fff;
+  background: #337ab7;
+  border: .1rem solid #337ab7;
+  border-radius: .3rem;
 }
 .cl-dkg{
   color: darkgray;
@@ -151,7 +209,9 @@ $joi-dark-blue:#36538b;
   padding: 60px 20px;
   text-align: center;
 }
-
+.modal-btn{
+  margin-top: 2rem;
+}
 
 .msgDialog {
   background: #f6f6f6;

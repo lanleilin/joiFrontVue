@@ -28,8 +28,8 @@
           </div>
         </div>
         <div class="modal-btn">
-          <span class="gray-btn" v-if="formTip.type!=='success'" @click="confirmStage()">确认</span>
-          <span class="blue-btn" @click="cancelStage()">close</span>
+          <span class="gray-btn-md" v-if="formTip.type!=='success'" @click="confirmStage()">确认</span>
+          <span class="blue-btn-md" @click="cancelStage()">close</span>
         </div>
         
       </div>
@@ -50,8 +50,8 @@
       </div>
       <div class="operate-bar">
         <ul>
-          <li class="blue-btn" @click="showStage()">添加</li>
-          <li class="darkgray-btn" @click="testlog()">done</li>
+          <li class="navy-btn-md" @click="showStage()">添加</li>
+          <li class="darkgray-btn-md" @click="testlog()">done</li>
         </ul>
       </div>
       <download-app></download-app>
