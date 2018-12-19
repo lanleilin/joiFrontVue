@@ -110,9 +110,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       request
         .post('/api/updateTimeline')
-        .send({
-          line: payload
-        })
+        .send(payload)
         .then(res => {
           console.log('updateTimeline', res)
           resolve(res)

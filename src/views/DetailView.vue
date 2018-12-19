@@ -51,7 +51,7 @@
       <div class="operate-bar">
         <ul>
           <li class="blue-btn" @click="showStage()">添加</li>
-          <li class="darkgray-btn">done</li>
+          <li class="darkgray-btn" @click="testlog()">done</li>
         </ul>
       </div>
       <download-app></download-app>
@@ -107,6 +107,9 @@ export default {
   methods: {
     formatTime (time) {
       return this.$utils.formatTime(time)
+    },
+    testlog(){
+      console.log('999',this.timeLine)
     },
     showStage () {
       let _now = new Date().getTime()
