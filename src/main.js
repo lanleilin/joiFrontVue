@@ -6,10 +6,10 @@ import router from './router'
 import store from './store'
 import vueScrollBehavior from 'vue-scroll-behavior'
 import 'normalize.css'
-import './utils/kit.js'
+import utils from './utils/kit.js'
 
 Vue.use(vueScrollBehavior, { router: router })
-
+Vue.prototype.$utils = utils
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

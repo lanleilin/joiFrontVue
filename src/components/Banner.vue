@@ -15,7 +15,7 @@
       <div class="content">
         <span class="title">{{title}}</span>
         <div class="button-wrapper" @click="testlog">
-          <span class="download">极速下载</span>
+          <span class="download">download</span>
           <span class="open">打开</span>
         </div>
       </div>
@@ -33,7 +33,7 @@ export default {
     title: {
       type: String,
       required: false,
-      default: '打开App, 浏览更多'
+      default: 'Mornie utunie'
     },
     // Ad banner
     adImg: {

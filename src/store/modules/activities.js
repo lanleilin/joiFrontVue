@@ -85,7 +85,7 @@ const actions = {
       })
   },
   /**
-   * Loading more data
+   * getTimeline
    * skip: 3 default
    * count: 3 default
    */
@@ -101,6 +101,25 @@ const actions = {
           })
         }
       })
+  },
+  /**
+   * updateTimeline
+   * new Promise((resolve, reject) => {})
+   */
+  updateTimeline ({ commit }, payload) {
+    return new Promise((resolve, reject) => {
+      request
+        .post('/api/updateTimeline')
+        .send({
+          line: payload
+        })
+        .then(res => {
+          console.log('updateTimeline', res)
+          resolve(res)
+        }, err => {
+          reject(err)
+        })
+    })
   },
   /**
    * Getting single event

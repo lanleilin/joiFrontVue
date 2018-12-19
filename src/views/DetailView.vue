@@ -8,16 +8,24 @@
           <p v-if="formTip.type==='success'" class="tip msgSuccess">{{formTip.msg}}</p>
         </div>
         <div class="line-form">
-          <input
+          <div class="ipt-wrapper">
+            <input
               v-model.trim="lineForm.time"
               type="text"
               name="time"
+              class="main-ipt"
               placeholder="time">
-          <input
+          </div>
+          <div class="ipt-wrapper">
+            <input
               v-model.trim="lineForm.stage"
               type="text"
               name="stage"
+              class="main-ipt"
+              :autofocus="true"
+              @keyup.enter="confirmStage()"
               placeholder="stage">
+          </div>
         </div>
         <div class="modal-btn">
           <span class="gray-btn" v-if="formTip.type!=='success'" @click="confirmStage()">确认</span>
@@ -30,7 +38,7 @@
       <div class="time-line">
         <ul>
           <li v-for="(timeItem,index) in timeLine">
-            <div class="line-time">{{timeItem.time}}</div>
+            <div class="line-time">{{formatTime(timeItem.time)}}</div>
             <div :class="{linePending:timeItem.status==='pending'}" class="line-id">
               <span>
                 {{index}}
@@ -97,19 +105,32 @@ export default {
     this.getTimeline()
   },
   methods: {
+    formatTime (time) {
+      return this.$utils.formatTime(time)
+    },
     showStage () {
+      let _now = new Date().getTime()
+      this.lineForm.time = this.formatTime(_now)
       this.showStageDialog = true
     },
     cancelStage () {
+      this.formTip['type'] = ''
       this.showStageDialog = false
     },
     confirmStage () {
+      if (!this.lineForm.stage) {
+        this.formTip['type'] = 'error'
+        this.formTip['msg'] = 'enter stage'
+        return
+      }
       let lineObj = {
         status: 'pending',
-        time: 1545104763137,
-        stage: 'there are no happy endings'
+        time: this.lineForm.time,
+        stage: this.lineForm.stage
       }
       this.timeLine.push(lineObj)
+      console.log('this.timeLine', this.timeLine)
+      this.updateTimeline(this.timeLine)
     },
     getTimeline () {
       this.$store.dispatch('getTimeline').then(res => {
@@ -120,6 +141,16 @@ export default {
           msg: error
         }
         console.log('getTimeline-err', error)
+      })
+    },
+    updateTimeline (data) {
+      this.$store.dispatch('updateTimeline', data).then(res => {
+        console.log('uuuuuuuuupTimeline', res)
+      }).catch(error => {
+        this.formTip = {
+          type: 'error',
+          msg: error
+        }
       })
     }
   },
@@ -157,9 +188,6 @@ export default {
 }
 .line-form{
   margin: 10px 0;
-  input{
-    boder:1px solid black;
-  }
 }
 .linePending{
   filter: grayscale(100%) !important; 
