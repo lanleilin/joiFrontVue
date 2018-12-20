@@ -108,12 +108,16 @@ export default {
     formatTime (time) {
       return this.$utils.formatTime(time)
     },
-    testlog(){
-      console.log('999',this.timeLine)
+    getQueryString (name) {
+      return this.$utils.getQueryString(name)
+    },
+    testlog () {
+      console.log('999', JSON.parse(decodeURI(this.getQueryString('line'))))
     },
     showStage () {
       let _now = new Date().getTime()
       this.lineForm.time = this.formatTime(_now)
+      // this.lineForm.time = _now
       this.showStageDialog = true
     },
     cancelStage () {
@@ -136,19 +140,23 @@ export default {
       this.updateTimeline(this.timeLine)
     },
     getTimeline () {
-      this.$store.dispatch('getTimeline').then(res => {
-        console.log('gggggggetTimeline', res)
+      let _lineId = this.getQueryString('id')
+      console.log('_lineId', _lineId)
+      this.$store.dispatch('getTimeline', _lineId).then(res => {
+        console.log('11111', res)
       }).catch(error => {
         this.formTip = {
           type: 'error',
           msg: error
         }
-        console.log('getTimeline-err', error)
       })
     },
     updateTimeline (data) {
       this.$store.dispatch('updateTimeline', data).then(res => {
         console.log('uuuuuuuuupTimeline', res)
+        this.formTip['type'] = 'success'
+        this.formTip['msg'] = 'ssssuccess'
+        this.getTimeline()
       }).catch(error => {
         this.formTip = {
           type: 'error',

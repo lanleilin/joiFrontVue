@@ -90,15 +90,29 @@ const actions = {
    * skip: 3 default
    * count: 3 default
    */
-  getTimeline ({commit, state}) {
+  getTimeline ({commit}, payload) {
     request
-      .get('/api/timeline')
+      .get(`/api/timeline/${payload}`)
       .end((err, res) => {
         if (!err) {
           console.log('getTimeline', res.body.timeline)
+          let _timeline = res.body.timeline[0].timeline
+          console.log('_timeline', _timeline)
+          // dummy data
+          if (_timeline === '') {
+            _timeline = [{
+              status: 'done',
+              time: 1545104763137,
+              stage: 'mock start'
+            }, {
+              status: 'pending',
+              time: 1545104763137,
+              stage: 'dummy end'
+            }]
+          }
           commit({
             type: 'getTimeline',
-            res: res.body.timeline
+            res: _timeline
           })
         }
       })

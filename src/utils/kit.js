@@ -61,12 +61,29 @@ const utils = {
       f.readAsText(bb)
     }
   },
+    /**
+   * [getQueryString 获取url参数]
+   * @param  {[type]} name [参数key]
+   */
+  getQueryString: function (name) {
+    console.log(name)
+    let _str = window.location.href.split('?')[1]
+    if (!_str) {
+      return
+    }
+    let reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)')
+    var r = _str.match(reg)
+    if (r != null) return unescape(r[2]); return null
+  },
   /**
    * Time formatting
    */
   formatTime (time, cFormat) {
     if (arguments.length === 0) {
       return null
+    }
+    if (Object.prototype.toString.call(time) === '[object String]') {
+      return time
     }
     const format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}'
     let date

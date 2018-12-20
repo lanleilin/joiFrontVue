@@ -13,13 +13,14 @@
         
       </div>
     </div>
-    <template v-if="mold === 'thumbnail'" v-for="item in items">
+    <template v-if="mold === 'thumbnail'" v-for="(item ,index) in items">
       <div class="thumbnail">
         <div class="content">
-          <router-link
-            :to="{name: 'DetailView', params: { id: item.id }}">
+          <!-- <router-link
+            :to="{name: 'DetailView', params: { 'id':index }}">
             <img :src="imgSrc" alt="cover">
-          </router-link>
+          </router-link> -->
+          <img :src="imgSrc" @click="goDetail(item.id,index)" alt="cover">
           <h3 class="note-title">{{item.name}}</h3>
           <p class="note-des">{{item.manufacturer}}</p>
         </div>
@@ -48,8 +49,6 @@
 
 <script>
 import { mapActions } from 'vuex'
-import utils from '../utils/kit.js'
-
 export default {
   name: 'list',
   props: {
@@ -76,6 +75,22 @@ export default {
     }
   },
   methods: {
+    goDetail (id, index) {
+      console.log('iiiiiiddddddddd', this.items[index])
+      // this.$router.push({
+      //   name: 'DetailView',
+      //   params: {
+      //     line: this.items[index]
+      //   }
+      // })
+      this.$router.push({
+        path: 'detail',
+        query: {
+          line: encodeURI(JSON.stringify(this.items[index])),
+          id: id
+        }
+      })
+    },
     showDelModal (id) {
       this.noteFrom.id = id
       this.isDelDialog = true
@@ -103,8 +118,9 @@ export default {
       this.formTip['type'] = ''
       this.isDelDialog = false
     },
+
     formatTime (time) {
-      return utils.formatTime(time)
+      return this.$utils.formatTime(time)
     },
     ...mapActions(['loadMore'])
   },

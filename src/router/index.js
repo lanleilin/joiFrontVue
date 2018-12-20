@@ -16,7 +16,6 @@ import NoteView from '../views/NoteView'
 
 import MusicView from '../views/MusicView'
 
-
 Vue.use(Router)
 
 export default new Router({
@@ -60,7 +59,7 @@ export default new Router({
           component: GroupView
         },
         {
-          path: 'detail/:id',
+          path: 'detail',
           name: 'DetailView',
           component: DetailView
         }
