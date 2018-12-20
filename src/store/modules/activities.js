@@ -20,7 +20,7 @@ const mutations = {
     state.events = loadArr
   },
   getTimeline (state, payload) {
-    state.timeLine = payload.res
+    state.timeLine = JSON.parse(payload.res)
   },
   getSingleEvent (state, payload) {
     state.eventItem = payload.res
@@ -122,10 +122,14 @@ const actions = {
    * new Promise((resolve, reject) => {})
    */
   updateTimeline ({ commit }, payload) {
+    let _data={
+      id:payload.id,
+      timeline:JSON.stringify(payload.timeLine)
+    }
     return new Promise((resolve, reject) => {
       request
         .post('/api/updateTimeline')
-        .send(payload)
+        .send(_data)
         .then(res => {
           console.log('updateTimeline', res)
           resolve(res)

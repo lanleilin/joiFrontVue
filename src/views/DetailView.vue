@@ -112,7 +112,8 @@ export default {
       return this.$utils.getQueryString(name)
     },
     testlog () {
-      console.log('999', JSON.parse(decodeURI(this.getQueryString('line'))))
+      // console.log('999', JSON.parse(decodeURI(this.getQueryString('line'))))
+      console.log(this.timeLine)
     },
     showStage () {
       let _now = new Date().getTime()
@@ -122,6 +123,7 @@ export default {
     },
     cancelStage () {
       this.formTip['type'] = ''
+      this.getTimeline()
       this.showStageDialog = false
     },
     confirmStage () {
@@ -137,7 +139,11 @@ export default {
       }
       this.timeLine.push(lineObj)
       console.log('this.timeLine', this.timeLine)
-      this.updateTimeline(this.timeLine)
+      let _data={
+        id:this.getQueryString ('id'),
+        timeLine:this.timeLine
+      }
+      this.updateTimeline(_data)
     },
     getTimeline () {
       let _lineId = this.getQueryString('id')
