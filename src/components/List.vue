@@ -7,8 +7,12 @@
           <p v-if="formTip.type==='success'" class="tip msgSuccess">{{formTip.msg}}</p>
         </div>
         <div class="modal-btn">
-          <span class="gray-btn-md" v-if="formTip.type!=='success'" @click="confirmDel()">确认删除</span>
-          <span class="blue-btn-md" @click="cancealDel()">close</span>
+          <span :class="[{'blue-btn-md':selectedOpr===0},{'gray-btn-md':selectedOpr!==0}]" v-if="formTip.type!=='success'" @click="moreOperate('delete')">删除</span>
+          <span :class="[{'blue-btn-md':selectedOpr===1},{'gray-btn-md':selectedOpr!==1}]" v-if="formTip.type!=='success'" @click="moreOperate('done')">DONE</span>
+        </div>
+        <div class="modal-btn">
+          <span class="navy-btn-md" v-if="formTip.type!=='success'" @click="confirmOpr()">确认</span>
+          <span class="gray-btn-md" @click="cancealDel()">close</span>
         </div>
         
       </div>
@@ -28,7 +32,7 @@
           <span class="created-at">{{formatTime(item.createdAt)}}</span>
           <!-- <span class="created-at">{{item.createdAt}}</span> -->
           <div class="label">
-            <span class="gray-btn-sm" @click="showDelModal(item.id)">删除</span>
+            <span class="gray-btn-sm" @click="showDelModal(item.id)">MORE</span>
             <a :href="item.price" target="blank" class="address blue-btn-sm">link</a>
           </div>
         </div>
@@ -64,6 +68,8 @@ export default {
   data () {
     return {
       isDelDialog: false,
+      oprIndex: '',
+      selectedOpr: 0,
       noteFrom: {
         id: ''
       },
@@ -86,7 +92,7 @@ export default {
       this.$router.push({
         path: 'detail',
         query: {
-          line: encodeURI(JSON.stringify(this.items[index])),
+          // line: encodeURI(JSON.stringify(this.items[index])),
           id: id
         }
       })
@@ -94,6 +100,28 @@ export default {
     showDelModal (id) {
       this.noteFrom.id = id
       this.isDelDialog = true
+    },
+    moreOperate (type) {
+      switch (type) {
+        case 'delete':
+          this.deleteOpr()
+          break
+        case 'done':
+          this.doneOpr()
+          break
+        default:
+      }
+    },
+    deleteOpr () {
+      this.selectedOpr = 0
+    },
+    doneOpr () {
+      this.selectedOpr = 1
+    },
+    confirmOpr () {
+      // switch(this.selectedOpr){
+      //   case
+      // }
     },
     confirmDel () {
       this.$store.dispatch('updateNote', this.noteFrom)

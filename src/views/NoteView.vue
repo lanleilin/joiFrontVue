@@ -87,9 +87,9 @@ export default {
   },
   methods: {
     createNote () {
+      let _now = new Date().getTime()
+      this.noteFrom['timeline'][0].time = _now
       let form = this.noteFrom
-      let _now=new Date().getTime()
-      this.noteFrom['timeline'][0].time=_now
       if (this.validateForm(form)) {
         this.$store.dispatch('createNote', form).then(res => {
           console.log('ccccccreateNote', res)

@@ -4,7 +4,7 @@ const state = {
   events: [],
   temp: [],
   eventItem: {},
-  timeLine: []
+  timeline: []
 }
 
 const mutations = {
@@ -20,7 +20,7 @@ const mutations = {
     state.events = loadArr
   },
   getTimeline (state, payload) {
-    state.timeLine = JSON.parse(payload.res)
+    state.timeline = JSON.parse(payload.res)
   },
   getSingleEvent (state, payload) {
     state.eventItem = payload.res
@@ -95,12 +95,10 @@ const actions = {
       .get(`/api/timeline/${payload}`)
       .end((err, res) => {
         if (!err) {
-          console.log('getTimeline', res.body.timeline)
-          let _timeline = res.body.timeline[0].timeline
-          console.log('_timeline', _timeline)
-          // dummy data
-          if (_timeline === '') {
-            _timeline = [{
+          let _timeline
+          if (!res.body.timeline.length) {
+            // dummy data
+            let dummyTimeline = [{
               status: 'done',
               time: 1545104763137,
               stage: 'mock start'
@@ -109,6 +107,10 @@ const actions = {
               time: 1545104763137,
               stage: 'dummy end'
             }]
+            _timeline = JSON.stringify(dummyTimeline)
+          } else {
+            // _timeline = res.body.timeline
+            _timeline = res.body.timeline[0]['timeline']
           }
           commit({
             type: 'getTimeline',
@@ -122,9 +124,9 @@ const actions = {
    * new Promise((resolve, reject) => {})
    */
   updateTimeline ({ commit }, payload) {
-    let _data={
-      id:payload.id,
-      timeline:JSON.stringify(payload.timeLine)
+    let _data = {
+      id: payload.id,
+      timeline: JSON.stringify(payload.timeline)
     }
     return new Promise((resolve, reject) => {
       request

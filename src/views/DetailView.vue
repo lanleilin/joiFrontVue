@@ -1,6 +1,6 @@
 <template>
   <div class="detail-view has-header">
-    <!-- <banner title="NOTE DETAIL"></banner> -->
+    <!-- add dialog -->
     <div v-if="showStageDialog" class="modal-wrapper" >
       <div class="modal-dialog">
         <div class="modal-msg">
@@ -31,13 +31,33 @@
           <span class="gray-btn-md" v-if="formTip.type!=='success'" @click="confirmStage()">确认</span>
           <span class="blue-btn-md" @click="cancelStage()">close</span>
         </div>
-        
       </div>
     </div>
+    <!-- add dialog -->
+    <!-- modify dialog -->
+    <div v-if="showModifyDialog" class="modal-wrapper" >
+      <div class="modal-dialog">
+        <div class="modal-msg">
+          <p v-if="formTip.type==='error'" class="tip msgError">{{formTip.msg}}</p>
+          <p v-if="formTip.type==='success'" class="tip msgSuccess">{{formTip.msg}}</p>
+        </div>
+        <div class="modal-btn">
+          <span :class="[{'blue-btn-md':selectedStage===0},{'gray-btn-md':selectedStage!==0}]" v-if="formTip.type!=='success'" @click="stageOperate('lightup')">点亮</span>
+          <span :class="[{'blue-btn-md':selectedStage===1},{'gray-btn-md':selectedStage!==1}]" v-if="formTip.type!=='success'" @click="stageOperate('darken')">置灰</span>
+          <span :class="[{'blue-btn-md':selectedStage===2},{'gray-btn-md':selectedStage!==2}]" v-if="formTip.type!=='success'" @click="stageOperate('delete')">删除</span>
+        </div>
+        <div class="modal-btn">
+          <span v-if="formTip.type!=='success'" class="navy-btn-md"  @click="confirmOperate()">comfirm</span>
+          <span class="gray-btn-md" @click="closeOperate()">close</span>
+        </div>
+      </div>
+    </div>
+    <!-- modify dialog -->
+
     <template v-if="!showLoading">
       <div class="time-line">
         <ul>
-          <li v-for="(timeItem,index) in timeLine">
+          <li v-for="(timeItem,index) in timeline" @click="showModify(index)">
             <div class="line-time">{{formatTime(timeItem.time)}}</div>
             <div :class="{linePending:timeItem.status==='pending'}" class="line-id">
               <span>
@@ -62,18 +82,22 @@
 
 <script>
 import { mapState } from 'vuex'
-import Banner from '../components/Banner'
 import Tags from '../components/Tags'
 import DownloadApp from '../components/DownloadApp'
 import Loading from '../components/Loading'
 
 export default {
   name: 'detail-view',
-  components: { Banner, Tags, DownloadApp, Loading },
+  components: { Tags, DownloadApp, Loading },
   data () {
     return {
       showLoading: true,
+      // add dialog
       showStageDialog: false,
+      // modify dialog
+      showModifyDialog: false,
+      stageIndex: '',
+      selectedStage: 0,
       formTip: {
         type: '',
         msg: ''
@@ -98,7 +122,7 @@ export default {
     // Getting Vuex State from store/modules/activities
     ...mapState({
       eventItem: state => state.activities.eventItem,
-      timeLine: state => state.activities.timeLine
+      timeline: state => state.activities.timeline
     })
   },
   mounted () {
@@ -111,15 +135,56 @@ export default {
     getQueryString (name) {
       return this.$utils.getQueryString(name)
     },
-    testlog () {
+    testlog (index) {
       // console.log('999', JSON.parse(decodeURI(this.getQueryString('line'))))
-      console.log(this.timeLine)
+      // console.log(this.timeline)
+      console.log(index)
     },
     showStage () {
       let _now = new Date().getTime()
       this.lineForm.time = this.formatTime(_now)
       // this.lineForm.time = _now
       this.showStageDialog = true
+    },
+    showModify (index) {
+      this.stageIndex = index
+      this.showModifyDialog = true
+    },
+    stageOperate (type) {
+      switch (type) {
+        case 'lightup':
+          this.lightupStage()
+          break
+        case 'darken':
+          this.darkenStage()
+          break
+        case 'delete':
+          this.deleteStage()
+          break
+        default:
+      }
+    },
+    closeOperate () {
+      this.formTip['type'] = ''
+      this.getTimeline()
+      this.showModifyDialog = false
+    },
+    confirmOperate () {
+      console.log('this.timeline', this.timeline)
+      this.sendUpdate()
+    },
+    lightupStage () {
+      this.selectedStage = 0
+      this.timeline[this.stageIndex]['status'] = 'done'
+    },
+    darkenStage () {
+      this.selectedStage = 1
+      this.timeline[this.stageIndex]['status'] = 'pending'
+    },
+    deleteStage () {
+      this.selectedStage = 2
+      // this.timeline[this.stageIndex]
+      this.timeline.splice(this.stageIndex, 1)
     },
     cancelStage () {
       this.formTip['type'] = ''
@@ -137,11 +202,15 @@ export default {
         time: this.lineForm.time,
         stage: this.lineForm.stage
       }
-      this.timeLine.push(lineObj)
-      console.log('this.timeLine', this.timeLine)
-      let _data={
-        id:this.getQueryString ('id'),
-        timeLine:this.timeLine
+      this.timeline.push(lineObj)
+      // console.log('this.timeline', this.timeline)
+      this.sendUpdate()
+    },
+    sendUpdate () {
+      console.log('in')
+      let _data = {
+        id: this.getQueryString('id'),
+        timeline: this.timeline
       }
       this.updateTimeline(_data)
     },
@@ -236,9 +305,10 @@ export default {
         position: absolute;
         top: -9px;
         margin-left: -8px;
-        height: 16px;
-        width: 16px;
-        border-radius: 16px;
+        height: 1.6rem;
+        line-height: 1.6rem;
+        width: 1.6rem;
+        border-radius: 1.6rem;
         color:#fff;
         background: #337ab7;
       }
