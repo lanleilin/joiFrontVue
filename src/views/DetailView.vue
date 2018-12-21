@@ -97,7 +97,7 @@ export default {
       // modify dialog
       showModifyDialog: false,
       stageIndex: '',
-      selectedStage: 0,
+      selectedStage: '',
       formTip: {
         type: '',
         msg: ''

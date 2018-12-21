@@ -141,6 +141,26 @@ const actions = {
     })
   },
   /**
+   * updateGender
+   * new Promise((resolve, reject) => {})
+   */
+  updateGender ({ commit }, payload) {
+    let _data 
+    payload=='done'?_data=1:_data=0;
+    console.log('_data',_data)
+    return new Promise((resolve, reject) => {
+      request
+        .post('/api/updateGender')
+        .send(_data)
+        .then(res => {
+          console.log('updateGender', res)
+          resolve(res)
+        }, err => {
+          reject(err)
+        })
+    })
+  },
+  /**
    * Getting single event
    * id: event id
    */

@@ -69,7 +69,7 @@ export default {
     return {
       isDelDialog: false,
       oprIndex: '',
-      selectedOpr: 0,
+      selectedOpr: '',
       noteFrom: {
         id: ''
       },
@@ -119,15 +119,19 @@ export default {
       this.selectedOpr = 1
     },
     confirmOpr () {
-      // switch(this.selectedOpr){
-      //   case
-      // }
+      switch(this.selectedOpr){
+        case 0:
+        this.confirmDel()
+        break
+        case 1:
+        this.confirmDone()
+        break
+        default:
+      }
     },
-    confirmDel () {
-      this.$store.dispatch('updateNote', this.noteFrom)
-      // this.isDelDialog=false
-      this.$store.dispatch('updateNote', this.noteFrom).then(res => {
-          // success close panel
+    confirmDone (type) {
+      console.log('confirmdonw')
+      this.$store.dispatch('updateGender', type).then(res => {
         this.loadMore()
         this.formTip = {
           type: 'success',
@@ -139,7 +143,21 @@ export default {
           type: 'error',
           msg: error
         }
-        console.log('ccccccccreateNote err', error)
+      })
+    },
+    confirmDel () {
+      this.$store.dispatch('updateNote', this.noteFrom).then(res => {
+        this.loadMore()
+        this.formTip = {
+          type: 'success',
+          msg: 'ssssssuccess'
+        }
+        this.loadMore()
+      }).catch(error => {
+        this.formTip = {
+          type: 'error',
+          msg: error
+        }
       })
     },
     cancealDel () {
