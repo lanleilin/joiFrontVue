@@ -120,10 +120,9 @@ export default {
       return true
     },
     clearTip () {
-      this.formTip = {
-        type: '',
-        msg: ''
-      }
+      this.noteFrom['address']=''
+      this.noteFrom['title']=''
+      this.noteFrom['description']=''
     },
     ...mapActions(['loadMore'])
   }
