@@ -145,13 +145,13 @@ const actions = {
    * new Promise((resolve, reject) => {})
    */
   updateGender ({ commit }, payload) {
-    let _data 
-    payload=='done'?_data=1:_data=0;
-    console.log('_data',_data)
+    console.log('000000000000',payload)
     return new Promise((resolve, reject) => {
       request
         .post('/api/updateGender')
-        .send(_data)
+        .send({
+          type:payload
+        })
         .then(res => {
           console.log('updateGender', res)
           resolve(res)

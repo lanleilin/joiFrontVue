@@ -129,9 +129,8 @@ export default {
         default:
       }
     },
-    confirmDone (type) {
-      console.log('confirmdonw')
-      this.$store.dispatch('updateGender', type).then(res => {
+    confirmDone () {
+      this.$store.dispatch('updateGender', this.selectedOpr).then(res => {
         this.loadMore()
         this.formTip = {
           type: 'success',
