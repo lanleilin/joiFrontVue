@@ -83,18 +83,13 @@ export default {
   methods: {
     goDetail (id, index) {
       console.log('iiiiiiddddddddd', this.items[index])
-      // this.$router.push({
-      //   name: 'DetailView',
-      //   params: {
-      //     line: this.items[index]
-      //   }
-      // })
-      this.$router.push({
-        path: 'detail',
-        query: {
-          // line: encodeURI(JSON.stringify(this.items[index])),
-          id: id
-        }
+      this.$store.dispatch('clearTimeline').then(res => {
+        this.$router.push({
+          path: 'detail',
+          query: {
+            id: id
+          }
+        })
       })
     },
     showDelModal (id) {
@@ -119,13 +114,13 @@ export default {
       this.selectedOpr = 1
     },
     confirmOpr () {
-      switch(this.selectedOpr){
+      switch (this.selectedOpr) {
         case 0:
-        this.confirmDel()
-        break
+          this.confirmDel()
+          break
         case 1:
-        this.confirmDone()
-        break
+          this.confirmDone()
+          break
         default:
       }
     },

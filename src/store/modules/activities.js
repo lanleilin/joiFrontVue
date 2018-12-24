@@ -1,4 +1,6 @@
 import request from 'superagent'
+import axios from 'axios'
+import mockData from './mockData'
 
 const state = {
   events: [],
@@ -90,7 +92,7 @@ const actions = {
    * skip: 3 default
    * count: 3 default
    */
-  getTimeline ({commit}, payload) {
+  getTimeline1 ({commit}, payload) {
     request
       .get(`/api/timeline/${payload}`)
       .end((err, res) => {
@@ -98,16 +100,7 @@ const actions = {
           let _timeline
           if (!res.body.timeline.length) {
             // dummy data
-            let dummyTimeline = [{
-              status: 'done',
-              time: 1545104763137,
-              stage: 'mock start'
-            }, {
-              status: 'pending',
-              time: 1545104763137,
-              stage: 'dummy end'
-            }]
-            _timeline = JSON.stringify(dummyTimeline)
+            _timeline = JSON.stringify(mockData['timeline'])
           } else {
             // _timeline = res.body.timeline
             _timeline = res.body.timeline[0]['timeline']
@@ -117,6 +110,36 @@ const actions = {
             res: _timeline
           })
         }
+      })
+  },
+  clearTimeline ({commit}) {
+    console.log('in clear')
+    commit({
+      type: 'getTimeline',
+      res: '[]'
+    })
+  },
+  /**
+   * getTimeline
+   * skip: 3 default
+   * count: 3 default
+   */
+  getTimeline ({commit}, payload) {
+    axios.get(`/api/timeline/${payload}`)
+      .then((res) => {
+        let _timeline
+        try {
+          _timeline = res.data.timeline[0]['timeline']
+        } catch (error) {
+          _timeline = JSON.stringify(mockData['timeline'])
+        }
+        console.log('000000000', _timeline)
+        commit({
+          type: 'getTimeline',
+          res: _timeline
+        })
+      }).catch(err => {
+        console.log(err)
       })
   },
   /**
@@ -145,12 +168,12 @@ const actions = {
    * new Promise((resolve, reject) => {})
    */
   updateGender ({ commit }, payload) {
-    console.log('000000000000',payload)
+    console.log('000000000000', payload)
     return new Promise((resolve, reject) => {
       request
         .post('/api/updateGender')
         .send({
-          type:payload
+          type: payload
         })
         .then(res => {
           console.log('updateGender', res)

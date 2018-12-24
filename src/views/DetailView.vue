@@ -98,6 +98,7 @@ export default {
       showModifyDialog: false,
       stageIndex: '',
       selectedStage: '',
+      // timeline: [],
       formTip: {
         type: '',
         msg: ''
@@ -135,10 +136,10 @@ export default {
     getQueryString (name) {
       return this.$utils.getQueryString(name)
     },
-    testlog (index) {
-      // console.log('999', JSON.parse(decodeURI(this.getQueryString('line'))))
-      // console.log(this.timeline)
-      console.log(index)
+    testlog () {
+      this.$store.dispatch('clearTimeline').then(res => {
+        console.log('ininininin')
+      })
     },
     showStage () {
       let _now = new Date().getTime()
@@ -218,7 +219,7 @@ export default {
       let _lineId = this.getQueryString('id')
       console.log('_lineId', _lineId)
       this.$store.dispatch('getTimeline', _lineId).then(res => {
-        console.log('11111', res)
+        console.log('22222', res)
       }).catch(error => {
         this.formTip = {
           type: 'error',
