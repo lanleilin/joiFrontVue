@@ -74,9 +74,10 @@ const actions = {
    * skip: 3 default
    * count: 3 default
    */
-  loadMore ({commit, state}) {
+  loadMore ({commit, state},payload) {
+    console.log('payload',payload)
     request
-      .get('/api/products')
+      .get(`/api/products/${payload}`)
       .end((err, res) => {
         if (!err) {
           console.log('apires', res.body.products)
@@ -172,7 +173,8 @@ const actions = {
       request
         .post('/api/updateGender')
         .send({
-          type: payload
+          id:payload.id,
+          type: payload.type
         })
         .then(res => {
           console.log('updateGender', res)

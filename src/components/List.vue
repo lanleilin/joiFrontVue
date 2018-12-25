@@ -125,13 +125,17 @@ export default {
       }
     },
     confirmDone () {
-      this.$store.dispatch('updateGender', this.selectedOpr).then(res => {
-        this.loadMore()
+      let _data={
+        id:this.noteFrom.id,
+        type:this.selectedOpr
+      }
+      this.$store.dispatch('updateGender', _data).then(res => {
+        this.loadMore(0)
         this.formTip = {
           type: 'success',
           msg: 'ssssssuccess'
         }
-        this.loadMore()
+        this.loadMore(0)
       }).catch(error => {
         this.formTip = {
           type: 'error',
@@ -141,12 +145,12 @@ export default {
     },
     confirmDel () {
       this.$store.dispatch('updateNote', this.noteFrom).then(res => {
-        this.loadMore()
+        this.loadMore(0)
         this.formTip = {
           type: 'success',
           msg: 'ssssssuccess'
         }
-        this.loadMore()
+        this.loadMore(0)
       }).catch(error => {
         this.formTip = {
           type: 'error',
