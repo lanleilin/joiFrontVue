@@ -127,8 +127,9 @@ export default {
     })
   },
   mounted () {
-    // this.getTimeline()
-    this.clearTimeline()
+    this.getTimeline()
+    this.getTimeline()
+    // this.clearTimeline()
   },
   methods: {
     formatTime (time) {
