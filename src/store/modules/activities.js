@@ -113,7 +113,6 @@ const actions = {
       })
   },
   clearTimeline ({commit}) {
-    console.log('in clear')
     commit({
       type: 'getTimeline',
       res: '[]'

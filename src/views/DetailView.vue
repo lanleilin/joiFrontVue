@@ -127,7 +127,8 @@ export default {
     })
   },
   mounted () {
-    this.getTimeline()
+    // this.getTimeline()
+    this.clearTimeline()
   },
   methods: {
     formatTime (time) {
@@ -136,10 +137,13 @@ export default {
     getQueryString (name) {
       return this.$utils.getQueryString(name)
     },
-    testlog () {
+    clearTimeline () {
       this.$store.dispatch('clearTimeline').then(res => {
         console.log('ininininin')
       })
+    },
+    testlog () {
+      this.getTimeline()
     },
     showStage () {
       let _now = new Date().getTime()
