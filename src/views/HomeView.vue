@@ -32,13 +32,13 @@ export default {
     })
   },
   mounted () {
-    this.loadMore()
+    this.loadMore(0)
   },
   methods: {
     // Using vue-infinite-loading
     onInfinite ($state) {
       setTimeout(() => {
-        this.loadMore()
+        this.loadMore(0)
         // $state.loaded();
         // this.$refs.infiniteLoading.$emit('$InfiniteLoading:loaded')
       }, 1000)

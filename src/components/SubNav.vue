@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions} from 'vuex'
 import request from 'superagent'
 import utils from '../utils/kit.js'
 
@@ -64,6 +64,7 @@ export default {
   data () {
     return {
       msgFlag: true,
+      genderFlag: true,
       msgObj: {
         type: '',
         msg: ''
@@ -78,18 +79,19 @@ export default {
       return this.currentUser.name ? this.currentUser.name : '请先登录'
     },
     // Map store/user state
-    ...mapGetters(['currentUser'])
+    ...mapGetters(['currentUser']),
+    ...mapActions(['loadMore'])
+
   },
   methods: {
     clicklog () {
-      console.log('clicklog1111', this.formatTime(1544696557749))
-      request
-        .get('/api/products')
-        .end((err, res) => {
-          if (!err) {
-            console.log('products', res.body.products)
-          }
-        })
+      let _type
+      this.genderFlag=!this.genderFlag
+      this.genderFlag?_type=1:_type=0
+      // this.loadMore(_type)
+      this.$store.dispatch('loadMore',_type).then(res => {
+        console.log('in loadmore')
+      })
     },
     formatTime (time) {
       return utils.formatTime(time)

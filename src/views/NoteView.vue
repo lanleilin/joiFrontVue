@@ -94,7 +94,7 @@ export default {
         this.$store.dispatch('createNote', form).then(res => {
           console.log('ccccccreateNote', res)
           // loadMore
-          this.loadMore()
+          this.loadMore(0)
           this.formTip = {
             type: 'success',
             msg: 'ssssssuccess'

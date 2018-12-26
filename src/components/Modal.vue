@@ -50,12 +50,12 @@ export default {
       // this.isDelDialog=false
       this.$store.dispatch('updateNote', this.noteFrom).then(res => {
           // success close panel
-        this.loadMore()
+        this.loadMore(0)
         this.formTip = {
           type: 'success',
           msg: 'ssssssuccess'
         }
-        this.loadMore()
+        this.loadMore(0)
       }).catch(error => {
         this.formTip = {
           type: 'error',
