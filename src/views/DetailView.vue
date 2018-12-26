@@ -146,6 +146,16 @@ export default {
     testlog () {
       this.getTimeline()
     },
+    hasSign (obj) {
+      let reg = /^((?!%).)*$/
+      let hasFlag = false
+      for (let p in obj) {
+        if (!reg.test(obj[p])) {
+          hasFlag = true
+        }
+      }
+      return hasFlag
+    },
     showStage () {
       let _now = new Date().getTime()
       this.lineForm.time = this.formatTime(_now)
