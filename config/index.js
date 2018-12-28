@@ -28,15 +28,6 @@ module.exports = {
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
         proxyTable: {
-            '/AnyChatFaceXClient': {
-                target: 'http://120.76.248.33:8081/AnyChatFaceXClient',
-                // target: 'https://h5.anychat.net.cn/AnyChatFaceXClient',
-                secure: false, // 接受 运行在 https 上的服务
-                changeOrigin: true,
-                pathRewrite: {
-                    '^/AnyChatFaceXClient': ''
-                }
-            },
             '/api': {
                 target: 'http://localhost:3001/api/',
                 secure: false, // 接受 运行在 https 上的服务
