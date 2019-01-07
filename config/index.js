@@ -29,6 +29,7 @@ module.exports = {
         assetsPublicPath: '/',
         proxyTable: {
             '/api': {
+                // target: 'http://lanleilin.club:3001/api/',
                 target: 'http://localhost:3001/api/',
                 secure: false, // 接受 运行在 https 上的服务
                 changeOrigin: true,

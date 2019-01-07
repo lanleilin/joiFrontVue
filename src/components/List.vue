@@ -87,7 +87,8 @@ export default {
         this.$router.push({
           path: 'detail',
           query: {
-            id: id
+            id: id,
+            type: '0'
           }
         })
       })
@@ -125,9 +126,9 @@ export default {
       }
     },
     confirmDone () {
-      let _data={
-        id:this.noteFrom.id,
-        type:this.selectedOpr
+      let _data = {
+        id: this.noteFrom.id,
+        type: this.selectedOpr
       }
       this.$store.dispatch('updateGender', _data).then(res => {
         this.loadMore(0)

@@ -258,16 +258,16 @@ export default {
   },
   created () {
     // Getting route params
-    const id = this.$route.params.id
+    // const id = this.$route.params.id
 
-    // Dispatching getSingleEvent
-    this.$store.dispatch({
-      type: 'getSingleEvent',
-      id: id
-    }).then(res => {
-      // Success handle
-      this.showLoading = false
-    })
+    // // Dispatching getSingleEvent
+    // this.$store.dispatch({
+    //   type: 'getSingleEvent',
+    //   id: id
+    // }).then(res => {
+    //   // Success handle
+    this.showLoading = false
+    // })
   }
 }
 </script>

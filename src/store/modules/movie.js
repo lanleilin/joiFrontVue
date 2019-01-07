@@ -7,7 +7,7 @@ const state = {
   newMovies: [],
   topMovies: [],
   movieTags: [{
-    title: '同时入选IMDB250和Joi电影250的电影',
+    title: '',
     href: 'https://m.douban.com/doulist/968362/',
     color: '#FFAC2D'
   },
