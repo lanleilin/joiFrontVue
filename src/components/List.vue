@@ -77,7 +77,8 @@ export default {
         type: '',
         msg: ''
       },
-      imgSrc: '/static/images/cat/hearMeRoar.jpg'
+      // imgSrc: '/static/images/cat/hearMeRoar.jpg'
+      imgSrc: 'https://upload-images.jianshu.io/upload_images/13937645-9b2024bb2952d936.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp'
     }
   },
   methods: {

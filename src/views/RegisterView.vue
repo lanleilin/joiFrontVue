@@ -22,8 +22,8 @@
       </form>
     </template>
     <template v-else>
-      <h1 class="title">欢迎加入Joi</h1>
-      <form method="post" @submit.prevent="onSubmit()">
+      <h1 class="title">SIGN IN</h1>
+      <form>
         <p v-if="error" class="tip error">{{error}}</p>
         <div class="form-alias">
           <label>
@@ -106,38 +106,6 @@ export default {
     showPwd: function () {
       this.isShow = this.isShow ? 0 : 1
       this.isShow ? this.passType = 'text' : this.passType = 'password'
-    },
-    beforeSubmit: function () {
-      // console.log('Submiting...')
-      this.isDisabled = true
-      this.registerState = '正在提交...'
-    },
-    onSuccess: function (res) {
-      // console.log('complete!')
-      this.isComplete = true
-      this.token = res.body.token
-    },
-    onError: function (err) {
-      this.error = err.body.error
-      this.registerState = '立即注册'
-      this.isDisabled = false
-    },
-    onSubmit: function () {
-      // Disabled submit button
-      this.beforeSubmit()
-      // Regist...
-      this.$store.dispatch({
-        type: 'register',
-        email: this.email,
-        pass: this.pass,
-        name: this.name
-      }).then(res => {
-        // Success handle
-        this.onSuccess(res)
-      }, err => {
-        // Error handle
-        this.onError(err)
-      })
     }
   },
   // Checkout current user
@@ -157,7 +125,8 @@ export default {
 <style lang="scss" scoped>
 .register-view {
   h1 {
-    margin: 10% 0 9%;
+    margin: 0;
+    padding-top: 2rem;
     font-size: 4rem;
     font-weight: 300;
     color: #337ab7;
