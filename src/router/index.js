@@ -1,18 +1,31 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import PagesView from '../views/PagesView'
-import HomeView from '../views/HomeView'
-import MovieView from '../views/MovieView'
-import BookView from '../views/BookView'
-import StatusView from '../views/StatusView'
-import GroupView from '../views/GroupView'
-import SubjectView from '../views/SubjectView'
-import DetailView from '../views/DetailView'
-import SearchView from '../views/SearchView'
-import LoginView from '../views/LoginView'
-import RegisterView from '../views/RegisterView'
-import NoteView from '../views/NoteView'
+// import PagesView from '../views/PagesView'
+// import HomeView from '../views/HomeView'
+// import MovieView from '../views/MovieView'
+// import BookView from '../views/BookView'
+// import StatusView from '../views/StatusView'
+// import GroupView from '../views/GroupView'
+// import SubjectView from '../views/SubjectView'
+// import DetailView from '../views/DetailView'
+// import SearchView from '../views/SearchView'
+// import LoginView from '../views/LoginView'
+// import RegisterView from '../views/RegisterView'
+// import NoteView from '../views/NoteView'
+
+const PagesView = () => import(/* webpackChunkName: "group-foo" */ '../views/PagesView')
+const HomeView = () => import('../views/HomeView')
+const MovieView = () => import('../views/MovieView')
+const BookView = () => import('../views/BookView')
+const StatusView = () => import('../views/StatusView')
+const GroupView = () => import('../views/GroupView')
+const SubjectView = () => import('../views/SubjectView')
+const DetailView = () => import('../views/DetailView')
+const SearchView = () => import('../views/SearchView')
+const LoginView = () => import('../views/LoginView')
+const RegisterView = () => import('../views/RegisterView')
+const NoteView = () => import('../views/NoteView')
 
 import MusicView from '../views/MusicView'
 
