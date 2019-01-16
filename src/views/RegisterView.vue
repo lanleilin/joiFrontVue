@@ -22,14 +22,14 @@
       </form>
     </template>
     <template v-else>
-      <h1 class="title">SIGN IN</h1>
+      <h1 class="title">SIGN UP</h1>
       <form>
         <p v-if="error" class="tip error">{{error}}</p>
         <div class="form-alias">
           <label>
             <strong>邮箱</strong>
             <input
-              v-model.trim="email"
+              v-model.trim="candidate.email"
               type="text"
               name="email"
               placeholder="邮箱">
@@ -40,7 +40,7 @@
               <strong>请输入密码</strong>
               <template v-if="passType === 'password'">
                 <input
-                v-model.trim="pass"
+                v-model.trim="candidate.passsword"
                 type="password"
                 name="pass"
                 placeholder="密码">
@@ -59,7 +59,7 @@
           <label>
             <strong>用户名</strong>
             <input
-              v-model.trim="name"
+              v-model.trim="candidate.name"
               type="text"
               name="name"
               placeholder="用户名">
@@ -67,8 +67,9 @@
         </div>
         <div class="form-submit">
           <button
-            class="navy-btn-lg"
-            type="submit"
+            class="dark-btn-lg sign-btn"
+            type="button"
+            @click="signUp()"
             :disabled="isDisabled"
             :class="{disabled: isDisabled}">
             {{registerState}}
@@ -76,7 +77,7 @@
         </div>
       </form>
       <div class="footer">
-        <div class="agreement">点击「注册」代表你已阅读并同意用户使用协议</div>
+        <div class="agreement">点击「SIGN UP」代表你已阅读并同意用户使用协议</div>
         <div class="btns">
           <router-link :to="{name: 'HomeView'}" replace>JOI</router-link>
         </div>
@@ -93,16 +94,21 @@ export default {
       isComplete: false,        // Registration completed
       isDisabled: false,        // Disabled submit button
       isShow: 0,                // Show pwd
-      registerState: '立即注册',
+      registerState: 'SIGN UP',
       passType: 'password',     // Password input type
       error: '',                // Verification results
-      email: '',
-      pass: '',
-      name: '',
+      candidate: {
+        email: '',
+        name: '',
+        password: ''
+      },
       token: ''
     }
   },
   methods: {
+    signUp () {
+      console.log(this.candidate)
+    },
     showPwd: function () {
       this.isShow = this.isShow ? 0 : 1
       this.isShow ? this.passType = 'text' : this.passType = 'password'
@@ -132,7 +138,10 @@ export default {
     color: #337ab7;
     text-align: center;
   }
-
+  .sign-btn{
+    outline: none;
+    -webkit-tap-highlight: none;
+  }
   form {
     padding: 2rem 1.5rem;
 
