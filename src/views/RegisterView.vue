@@ -23,6 +23,9 @@
     </template>
     <template v-else>
       <h1 class="title">SIGN UP</h1>
+      <ul class="register-err">
+        <li>error</li>
+      </ul>
       <form>
         <p v-if="error" class="tip error">{{error}}</p>
         <div class="form-alias">
@@ -141,6 +144,13 @@ export default {
   .sign-btn{
     outline: none;
     -webkit-tap-highlight: none;
+  }
+  .register-err{
+    padding: 2rem 1.5rem;
+    li{
+      padding: 0 0.8rem;
+      text-align: center;
+    }
   }
   form {
     padding: 2rem 1.5rem;
