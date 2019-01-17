@@ -24,7 +24,7 @@
     <template v-else>
       <h1 class="title">SIGN UP</h1>
       <ul class="register-err">
-        <li>error</li>
+        <li v-for="item in formErr">{{item.msg}}</li>
       </ul>
       <form>
         <p v-if="error" class="tip error">{{error}}</p>
@@ -105,6 +105,8 @@ export default {
         name: '',
         password: ''
       },
+      formErr:[
+      ],
       token: ''
     }
   },
@@ -132,6 +134,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../styles/common/common.scss';
 .register-view {
   h1 {
     margin: 0;
@@ -146,10 +149,12 @@ export default {
     -webkit-tap-highlight: none;
   }
   .register-err{
-    padding: 2rem 1.5rem;
+    padding: 1rem 1.5rem;
     li{
       padding: 0 0.8rem;
       text-align: center;
+      font-size: 16px;
+      color: $joi-error-red;
     }
   }
   form {
