@@ -1,13 +1,13 @@
 <template>
   <div class="login-view">
     <h1>
-      <a href="javascript:history.go(-1);">取消</a>登录Joi
+      <a href="javascript:history.go(-1);">Cancel</a>SIGN IN
     </h1>
     <form method="get" @submit.prevent="onSubmit()">
       <p v-if="error" class="tip error">{{error}}</p>
       <div class="form-user">
         <label>
-          <strong>邮箱</strong>
+          <strong>Email</strong>
           <input
             v-model="email"
             type="email"
@@ -18,7 +18,7 @@
       </div>
       <div class="form-pwd">
         <label>
-          <strong>请输入密码</strong>
+          <strong>Please enter password</strong>
           <template v-if="passType === 'password'">
             <input
             v-model="token"
@@ -44,8 +44,9 @@
       </div> -->
       <div class="">
         <button
-          class="submit"
-          type="submit"
+          class="dark-btn-lg"
+          type="button"
+          @click="goLogin()"
           :disabled="isDisabled"
           :class="{disabled: isDisabled}">
           {{loginState}}
@@ -53,9 +54,9 @@
       </div>
     </form>
     <div class="footer">
-      <div class="more-login">使用其他方式登录 &amp; 找回密码</div>
+      <div class="more-login">Other methods &amp; Find password</div>
       <div class="btns">
-        <router-link :to="{name: 'RegisterView'}">注册Joi帐号</router-link>
+        <router-link :to="{name: 'RegisterView'}">SIGN UP</router-link>
         <router-link :to="{name: 'HomeView'}" replace>JOI</router-link>
       </div>
     </div>
@@ -69,7 +70,7 @@ export default {
   name: 'login-view',
   data () {
     return {
-      loginState: '登录',
+      loginState: 'SIGN IN',
       isDisabled: false,    // Disabled submit button
       isShow: 0,            // Show pwd
       passType: 'password',
@@ -84,6 +85,9 @@ export default {
     })
   },
   methods: {
+    goLogin () {
+      console.log('login lll')
+    },
     showPwd: function () {
       this.isShow = this.isShow ? 0 : 1
       this.isShow ? this.passType = 'text' : this.passType = 'password'
@@ -96,54 +100,13 @@ export default {
         value: e.target.value
       })
     },
-    beforeSubmit: function () {
-      // console.log('Submiting...')
-      this.isDisabled = true
-      this.loginState = '正在登录...'
-    },
-    onSuccess: function (res) {
-      // console.log('complete!')
-      this.$router.push({name: 'StatusView'})
-    },
-    onError: function (err) {
-      // console.log(err)
-      this.error = err.body.error
-      this.loginState = '登录'
-      this.isDisabled = false
-    },
-    onSubmit: function () {
-      // Disabled submit button
-      this.beforeSubmit()
-      // Login...
-      this.$store.dispatch({
-        type: 'login',
-        email: this.email,
-        token: this.token
-      }).then(res => {
-        // Success handle
-        this.onSuccess(res)
-      }, err => {
-        // Error handle
-        this.onError(err)
-      })
-    }
-  },
-  beforeRouteEnter (to, from, next) {
-    next(vm => {
-      if (vm.$store.getters.currentUser.email) {
-        // next({ path: '/' })
-        vm.$router.push({name: 'StatusView'})
-      } else {
-        next()
-      }
-    })
-  },
-  created () {
+    created () {
     // Getting local user automatic filling
-    if (localStorage.getItem('email')) {
-      this.$store.commit({
-        type: 'getLocalUser'
-      })
+      if (localStorage.getItem('email')) {
+        this.$store.commit({
+          type: 'getLocalUser'
+        })
+      }
     }
   }
 }
