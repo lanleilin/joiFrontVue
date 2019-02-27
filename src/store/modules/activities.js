@@ -79,7 +79,7 @@ const actions = {
     axios
       .get(`/api/products/${payload}`)
       .then((res) => {
-        console.log('apires111s', res)
+        // console.log('apires111s', res)
         commit({
           type: 'loadMore',
           res: res.data.products

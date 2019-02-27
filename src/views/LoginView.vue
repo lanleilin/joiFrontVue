@@ -86,12 +86,56 @@ export default {
   },
   methods: {
     goLogin () {
+      let _this = this
       console.log('login lll')
-      this.$store.dispatch('loadMore', 0).then(res => {
-        console.log('in loadmore')
-      }).then(() => {
-        this.$store.dispatch('loadMore', 1)
-      })
+      // this.$store.dispatch('loadMore', 0).then(res => {
+      //   console.log('in loadmore')
+      // }).then(() => {
+      //   this.$store.dispatch('loadMore', 1)
+      // })
+      // let promiseA = new Promise((resolve, reject) => {
+      //   this.$store.dispatch('loadMore', 0).then(res => {
+      //     resolve(res)
+      //   }).catch(err => {
+      //     reject(err)
+      //   })
+      // })
+      // let promiseB = new Promise((resolve, reject) => {
+      //   this.$store.dispatch('loadMore', 1).then(res => {
+      //     resolve(res)
+      //   }).catch(err => {
+      //     reject(err)
+      //   })
+      // })
+      // Promise.all([promiseA, promiseB]).then(() => {
+      //   console.log('111')
+      // })
+
+      async function getLoad () {
+        console.log('say hello')
+        // let _this = this
+        let promiseA = new Promise((resolve, reject) => {
+          _this.$store.dispatch('loadMore', 0).then(res => {
+            console.log('111', res)
+            resolve('2222')
+          }).catch(err => {
+            reject(err)
+          })
+        })
+        let _result = await promiseA
+        console.log('rrrrrrr', _result)
+      }
+      getLoad()
+      // let ts = getLoad()
+      // console.log('ts', ts)
+      // async function f() {
+      //   let promise = new Promise((resolve, reject) => {
+      //       setTimeout(() => resolve('done!'), 1000)
+      //   })
+      //   let result = await promise
+      //   alert(result)
+      // }
+      // f()
     },
     showPwd: function () {
       this.isShow = this.isShow ? 0 : 1
