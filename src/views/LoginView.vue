@@ -87,6 +87,11 @@ export default {
   methods: {
     goLogin () {
       console.log('login lll')
+      this.$store.dispatch('loadMore', 0).then(res => {
+        console.log('in loadmore')
+      }).then(() => {
+        this.$store.dispatch('loadMore', 1)
+      })
     },
     showPwd: function () {
       this.isShow = this.isShow ? 0 : 1

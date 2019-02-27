@@ -74,18 +74,18 @@ const actions = {
    * skip: 3 default
    * count: 3 default
    */
-  loadMore ({commit, state},payload) {
-    console.log('payload',payload)
-    request
+  loadMore ({commit, state}, payload) {
+    console.log('payload', payload)
+    axios
       .get(`/api/products/${payload}`)
-      .end((err, res) => {
-        if (!err) {
-          console.log('apires', res.body.products)
-          commit({
-            type: 'loadMore',
-            res: res.body.products
-          })
-        }
+      .then((res) => {
+        console.log('apires111s', res)
+        commit({
+          type: 'loadMore',
+          res: res.data.products
+        })
+      }).catch(err => {
+        console.log(err)
       })
   },
   /**
@@ -173,7 +173,7 @@ const actions = {
       request
         .post('/api/updateGender')
         .send({
-          id:payload.id,
+          id: payload.id,
           type: payload.type
         })
         .then(res => {
