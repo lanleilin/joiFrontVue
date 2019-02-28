@@ -65,6 +65,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import activityApi from '../store/modules/activityApi'
 
 export default {
   name: 'login-view',
@@ -88,6 +89,7 @@ export default {
     goLogin () {
       let _this = this
       console.log('login lll')
+      activityApi.testlog()
       // this.$store.dispatch('loadMore', 0).then(res => {
       //   console.log('in loadmore')
       // }).then(() => {
