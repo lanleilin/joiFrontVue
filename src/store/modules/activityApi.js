@@ -4,6 +4,13 @@ const activityApi = {
   testlog: function () {
     console.log('testlog')
   },
+  testTimeout: function (time) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('aya')
+      }, time)
+    })
+  },
     /**
    * Loading more data
    * skip: 3 default

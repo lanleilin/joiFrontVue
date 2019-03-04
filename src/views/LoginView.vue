@@ -95,8 +95,12 @@ export default {
         //     reject(err)
         //   })
         // })
+        // await activityApi.testTimeout(1000)
         let promiseA = activityApi.loadMore(0)
         let _result = await promiseA
+        promiseA.then(() => {
+          console.log('say hello')
+        })
         console.log('get login', _result)
       }
       getLoad()
