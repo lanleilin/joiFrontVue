@@ -10,13 +10,15 @@ const activityApi = {
    * count: 3 default
    */
   loadMore: function (payload) {
-    axios
+    return new Promise((resolve, reject) => {
+      axios
       .get(`/api/products/${payload}`)
-      // .then((res) => {
-      //   console.log('2222222', res)
-      // }).catch(err => {
-      //   console.log(err)
-      // })
+      .then((res) => {
+        resolve(res)
+      }).catch(err => {
+        reject(err)
+      })
+    })
   }
 }
 export default activityApi

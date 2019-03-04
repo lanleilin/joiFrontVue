@@ -87,42 +87,17 @@ export default {
   },
   methods: {
     goLogin () {
-      // let _this = this
-      // activityApi.loadMore(1)
-      // this.$store.dispatch('loadMore', 0).then(res => {
-      //   console.log('in loadmore')
-      // }).then(() => {
-      //   this.$store.dispatch('loadMore', 1)
-      // })
-      // let promiseA = new Promise((resolve, reject) => {
-      //   this.$store.dispatch('loadMore', 0).then(res => {
-      //     resolve(res)
-      //   }).catch(err => {
-      //     reject(err)
-      //   })
-      // })
-      // let promiseB = new Promise((resolve, reject) => {
-      //   this.$store.dispatch('loadMore', 1).then(res => {
-      //     resolve(res)
-      //   }).catch(err => {
-      //     reject(err)
-      //   })
-      // })
-      // Promise.all([promiseA, promiseB]).then(() => {
-      //   console.log('111')
-      // })
-
       async function getLoad () {
-        console.log('say hello')
-        let promiseA = new Promise((resolve, reject) => {
-          activityApi.loadMore(1).then((res) => {
-            resolve(res)
-          }).catch((err) => {
-            reject(err)
-          })
-        })
+        // let promiseA = new Promise((resolve, reject) => {
+        //   activityApi.loadMore(1).then((res) => {
+        //     resolve('in login view')
+        //   }).catch((err) => {
+        //     reject(err)
+        //   })
+        // })
+        let promiseA = activityApi.loadMore(0)
         let _result = await promiseA
-        console.log('rrrrrrr', _result)
+        console.log('get login', _result)
       }
       getLoad()
     },
